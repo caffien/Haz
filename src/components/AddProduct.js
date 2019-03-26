@@ -11,13 +11,13 @@ export default class AddProduct extends Component {
 
 
   getAuth(){
-    fetch(’https://haaz.exp-pv.com/api/get_auth', {
-      method: ‘GET’,
+    fetch('https://haaz.exp-pv.com/api/get_auth', {
+      method: 'GET',
+      // domy abo klbfgh
       headers: {
-        Accept: ‘application/json’, ‘Content-Type’: ‘application/json’,
+        Accept: 'application/json', 'Content-Type': 'application/json',
       }}).then((response) => response.json())
       .then((responseJson) => {
-        console.log(“sad,jf”);
         console.log(responseJson);
         return;
       })
@@ -127,7 +127,7 @@ export default class AddProduct extends Component {
         </Section>
 
         <Section>
-        <Button whenPress={() => (this.getAuth.bind(this))}>
+        <Button whenPress={() => (this.getAuth())}>
         تابع !
         </Button>
         <Button whenPress={() => (Alert.alert(this.state.responseJson))}>
@@ -144,3 +144,15 @@ export default class AddProduct extends Component {
       );
     }
   }
+  // getAuth(){
+  //   fetch('https://haaz.exp-pv.com/api/get_auth', {
+  //   }).then((response) => {
+  //     const res = response.status;
+  //     console.log(response.json());
+  //     res === 200 ? console.log('it worksss!!!') : console.log(`Fuck the STATUS # is ${res}`);
+  //     return;
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+  // }
