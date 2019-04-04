@@ -64,7 +64,6 @@ class MapComponent extends Component {
   }
 
   renderScreen = () => {
-
           return (
         <View style={styles.container}>
         { this.state.initialPosition.latitude !== 0 &&
@@ -73,15 +72,8 @@ class MapComponent extends Component {
             showsUserLocation
             userLocationAnnotationTitle='موقعي الحالي'
             initialRegion={this.state.initialPosition}
-          >
+          />
 
-
-          {this.props.Markers.map((marker) => (
-          this.renderMarker(marker)
-
-          ))}
-
-            </ MapView>
           }
         </View>
       );
