@@ -42,7 +42,7 @@ class GeolocationExample extends Component {
 
       this.setState({ initialPosition: initialRegion })
     },
-    (error) => alert("Bad connction"),
+    (error) => alert('Bad connction'),
     { enableHighAccuracy: true, timeout: 200000, maximumAge: 10000 });
   }
 

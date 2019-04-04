@@ -181,6 +181,7 @@ export default class AddProduct extends Component {
         );
     }
 }
+
 // getAuth(){
 //   fetch('https://haaz.exp-pv.com/api/get_auth', {
 //   }).then((response) => {

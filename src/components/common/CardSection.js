@@ -11,7 +11,7 @@ const CardSection = ({ children, whenPress, text, CustomStyle }) => {
         <View style={[styles.containerStyle]}>
             <Icon name='rowing'/>
             <Text>
-                good stuff
+                {text}
             </Text>
             <Button whenPress={whenPress} CustomStyle={CustomStyle}/>
         </View>
@@ -23,7 +23,7 @@ const styles = {
     containerStyle: {
         borderBottomWidth: 1,
         padding: 5,
-        // marginTop: 2,
+        marginTop: 8,
         // backgroundColor: '#E0F8F8',
         backgroundColor: '#e6f3ff',
         justifyContent: 'space-between',
