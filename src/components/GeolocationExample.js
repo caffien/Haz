@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import MapView from 'react-native-maps';
 
 class GeolocationExample extends Component {
   constructor(props) {
@@ -29,15 +30,19 @@ class GeolocationExample extends Component {
   componentDidmount() {
     navigator.geolocation.clearWatch(this.watchId);
   }
-  
+
 
   render() {
     return (
-      <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Latitude: {this.state.latitude}</Text>
-        <Text>Longitude: {this.state.longitude}</Text>
-        {this.state.error ? <Text>Error: {this.state.error}</Text> : null}
-      </View>
+      <MapView
+      initialRegion={{
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+      />
+
     );
   }
 }
