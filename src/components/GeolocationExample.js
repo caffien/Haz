@@ -7,24 +7,32 @@ class GeolocationExample extends Component {
     super(props);
 
     this.state = {
-      latitude: null,
-      longitude: null,
+      latitude: 40.7536853999999,
+      longitude: 0,
       error: null,
     };
   }
 
   componentDidMount() {
-    this.watchId = navigator.geolocation.watchPosition(
-      (position) => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null,
-        });
-      },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
-    );
+    console.log('this.props.Marker');
+    console.log(this.props.Markers);
+    console.log('this.props.Marker');
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      var lat = parseFloat(position.coords.latitude)
+      var long = parseFloat(position.coords.longitude)
+
+      var initialRegion = {
+        latitude: lat,
+        longitude: long,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      }
+
+      this.setState({ initialPosition: initialRegion })
+    },
+    (error) => alert("Bad connction"),
+    { enableHighAccuracy: true, timeout: 200000, maximumAge: 10000 });
   }
 
   componentDidmount() {
@@ -34,7 +42,8 @@ class GeolocationExample extends Component {
 
   render() {
     return (
-      <MapView
+      <View>
+      { true && <MapView
       initialRegion={{
         latitude: this.state.latitude,
         longitude: this.state.longitude,
@@ -42,6 +51,9 @@ class GeolocationExample extends Component {
         longitudeDelta: 0.0421,
       }}
       />
+    }
+    </View>
+
 
     );
   }
