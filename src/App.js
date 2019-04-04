@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import AccountPage from './components/AccountPage.js';
+import GeolocationExample from './components/GeolocationExample.js';
 
 
 class App extends Component {

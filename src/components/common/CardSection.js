@@ -1,27 +1,35 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Icon } from 'react-native-elements';
+import {
+    View, Text
+} from 'react-native';
+import { Button } from './Button';
 
 
-const CardSection = (props) => {
-  return (
-  <View style={[styles.containerStyle, props.style]}>
-  {props.children}
-  </View>
-  );
+const CardSection = ({ children, whenPress, text, CustomStyle }) => {
+    return (
+        <View style={[styles.containerStyle]}>
+            <Icon name='rowing'/>
+            <Text>
+                good stuff
+            </Text>
+            <Button whenPress={whenPress} CustomStyle={CustomStyle}/>
+        </View>
+    );
 };
 
 
 const styles = {
-  containerStyle: {
-    borderBottomWidth: 1,
-    padding: 5,
-    // marginTop: 2,
-    // backgroundColor: '#E0F8F8',
-    backgroundColor: '#e6f3ff',
-    justifyContent: 'flex-start',
-    flexDirection: 'row-reverse',
-    borderColor: '#ddd',
-    postion: 'relative'
-  }
+    containerStyle: {
+        borderBottomWidth: 1,
+        padding: 5,
+        // marginTop: 2,
+        // backgroundColor: '#E0F8F8',
+        backgroundColor: '#e6f3ff',
+        justifyContent: 'space-between',
+        flexDirection: 'row-reverse',
+        borderColor: '#ddd',
+        postion: 'relative'
+    }
 };
 export { CardSection };

@@ -3,73 +3,83 @@ import { Text, View, Alert, Picker } from 'react-native';
 import { Card, Button, Section, TextInputt, CardSection } from './common';
 
 export default class AddProduct extends Component {
-  state = { title: '', product_title: '',
-  product_description_en: '',
-  product_description: '',
-  category: 'None',
-  itemValue: '',
-  categories: []
-}
-  componentWillMount() {
-    this.getProductsIds();
-  }
-  getAuth(){
-    fetch('https://haaz.exp-pv.com/api/get_auth', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json', 'Content-Type': 'application/json',
-      }}).then((response) => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        return;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    state = {
+        title: '', product_title: '',
+        product_description_en: '',
+        product_description: '',
+        category: 'None',
+        itemValue: '',
+        categories: []
+    };
+
+    componentWillMount() {
+        this.getProductsIds();
+    }
+
+    getAuth() {
+        fetch('https://haaz.exp-pv.com/api/get_auth', {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json', 'Content-Type': 'application/json',
+            }
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson);
+                return;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     SendProductToBackendAndSaveResults() {
-      fetch('https://haaz.exp-pv.com/api/create_product', {
-        method: 'POST',
-        body: JSON.stringify({ auth: '57b126bcc851304b0e80c4c336074a690cc70c66', ...this.state }),
-      }).then((response) => {
-        const res = response.status;
-        res === 200 ? console.log('it worksss!!!') : console.log(`Fuck the STATUS # is ${res}`);
-        return;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        fetch('https://haaz.exp-pv.com/api/create_product', {
+            method: 'POST',
+            body: JSON.stringify({ auth: '57b126bcc851304b0e80c4c336074a690cc70c66', ...this.state }),
+        })
+            .then((response) => {
+                const res = response.status;
+                res === 200 ? console.log('it worksss!!!') : console.log(`Fuck the STATUS # is ${res}`);
+                return;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
-      getProductsIds(){
+    getProductsIds() {
         fetch('https://haaz.exp-pv.com/api/get_product_type', {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json', 'Content-Type': 'application/json',
-          }}).then((response) => response.json())
-          .then((responseJson) => {
-            this.setState({ categories: responseJson })
-            return;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+            method: 'GET',
+            headers: {
+                Accept: 'application/json', 'Content-Type': 'application/json',
+            }
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ categories: responseJson });
+                return;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
+
     ShowList() {
-      return (
-      <Picker
-            style={{ flex: 1, height: 44 }}
-            itemStyle={{ height: 44, borderWidth: 0 }}
-            selectedValue={this.state.category}
-            onValueChange={category => this.setState({ category })}
-      >
-            {this.state.categories.map((item, index) => {
-              return <Picker.Item label={item.cat_name_en} value={index} />
-            })}
+        return (
+            <Picker
+                style={{ flex: 1, height: 44 }}
+                itemStyle={{ height: 44, borderWidth: 0 }}
+                selectedValue={this.state.category}
+                onValueChange={category => this.setState({ category })}
+            >
+                {this.state.categories.map((item, index) => {
+                    return <Picker.Item label={item.cat_name_en} value={index}/>;
+                })}
             </Picker>
-          )
+        );
     }
+
     categories = [];
 
     // ShowList(){
@@ -99,86 +109,87 @@ export default class AddProduct extends Component {
     //     this.getProductsIds();
     //   }
     // }
-    Screen(){
-      return(
+    Screen() {
+        return (
 
-        <Card>
-        <Section>
-        <TextInputt
-        label="title "
-        placeholder="title"
-        onChangeText={(text) => (this.setState({ title: text }))}
-        value={this.state.title}
-        />
+            <Card>
+                <Section>
+                    <TextInputt
+                        label="title "
+                        placeholder="title"
+                        onChangeText={(text) => (this.setState({ title: text }))}
+                        value={this.state.title}
+                    />
 
-        </Section>
-        <Section>
-        <TextInputt
-        label=" title"
-        placeholder="product_title"
-        onChangeText={(text) => (this.setState({ product_title: text }))}
-        value={this.state.product_title}
+                </Section>
+                <Section>
+                    <TextInputt
+                        label=" title"
+                        placeholder="product_title"
+                        onChangeText={(text) => (this.setState({ product_title: text }))}
+                        value={this.state.product_title}
 
-        />
-        </Section>
+                    />
+                </Section>
 
-        <Section>
-        <TextInputt
-        label=" desc"
-        placeholder=" product_description_en"
-        onChangeText={(text) => (this.setState({ product_description_en: text }))}
-        value={this.state.product_description_en}
+                <Section>
+                    <TextInputt
+                        label=" desc"
+                        placeholder=" product_description_en"
+                        onChangeText={(text) => (this.setState({ product_description_en: text }))}
+                        value={this.state.product_description_en}
 
 
-        />
-        </Section>
+                    />
+                </Section>
 
-        <Section>
-        <TextInputt
-        secureTextEntry
-        label="product_description   "
-        placeholder="product_description"
-        onChangeText={(text) => (this.setState({ product_description: text }))}
-        value={this.state.product_description}
+                <Section>
+                    <TextInputt
+                        secureTextEntry
+                        label="product_description   "
+                        placeholder="product_description"
+                        onChangeText={(text) => (this.setState({ product_description: text }))}
+                        value={this.state.product_description}
 
-        />
-        </Section>
+                    />
+                </Section>
 
-        <Section>
-        <Button whenPress={() => (this.getProductsIds())}>
-        تابع !
-        </Button>
-        <Button whenPress={() => (console.log(this.categories))}>
-        Check Here !
-        </Button>
-        </Section>
-        </Card>
-      );
+                <Section>
+                    <Button whenPress={() => (this.getProductsIds())}>
+                        تابع !
+                    </Button>
+                    <Button whenPress={() => (console.log(this.categories))}>
+                        Check Here !
+                    </Button>
+                </Section>
+            </Card>
+        );
     }
+
     render() {
-      return (
-        <View>
-        <Card>
-        {this.ShowList()}
-        </Card>
-        <View style={{ marginTop: 50 }}>
-        {this.Screen()}
-        </View>
-      </View>
+        return (
+            <View>
+                <Card>
+                    {this.ShowList()}
+                </Card>
+                <View style={{ marginTop: 50 }}>
+                    {this.Screen()}
+                </View>
+            </View>
 
 
-      );
+        );
     }
-  }
-  // getAuth(){
-  //   fetch('https://haaz.exp-pv.com/api/get_auth', {
-  //   }).then((response) => {
-  //     const res = response.status;
-  //     console.log(response.json());
-  //     res === 200 ? console.log('it worksss!!!') : console.log(`Fuck the STATUS # is ${res}`);
-  //     return;
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
-  // }
+}
+// getAuth(){
+//   fetch('https://haaz.exp-pv.com/api/get_auth', {
+//   }).then((response) => {
+//     const res = response.status;
+//     console.log(response.json());
+//     res === 200 ? console.log('it worksss!!!') : console.log(`Fuck the STATUS # is ${res}`);
+//     return;
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+// }

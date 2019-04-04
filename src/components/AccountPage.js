@@ -8,14 +8,19 @@ export default class AccountPage extends Component {
         return (
             <View>
                 <View>
-                    <CardSection>
-                        <Text>
-                            sjkdhfj
-                        </Text>
-                        <Button>
-                            sjdf
-                        </Button>
-                    </CardSection>
+                    <CardSection
+                        CustomStyle={{
+                            height: 20,
+                            flex: 0,
+                            alignSelf: 'stretch',
+                            backgroundColor: '#fff',
+                            borderRadius: 5,
+                            borderWidth: 1.5,
+                            borderColor: '#007aff',
+                            marginLeft: 20,
+                            marginRight: 20
+                        }}
+                    />
                 </View>
 
                 {/*<View>*/}
