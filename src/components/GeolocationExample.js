@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
+
+const { width, height } = Dimensions.get('window')
+
+const SCREEN_HEIGHT = height;
+const SCREEN_WIDTH = width;
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class GeolocationExample extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      latitude: 40.7536853999999,
-      longitude: 0,
-      error: null,
+      initialPosition: {
+          latitude: 0,
+          longitude: 0,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }
     };
   }
 
