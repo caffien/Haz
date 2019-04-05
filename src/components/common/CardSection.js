@@ -3,6 +3,7 @@ import { Icon } from 'react-native-elements';
 import {
     View, Text
 } from 'react-native';
+
 import { Button } from './Button';
 
 
@@ -22,7 +23,7 @@ const CardSection = ({ children, whenPress, text, CustomStyle }) => {
 const styles = {
     containerStyle: {
         borderBottomWidth: 1,
-        padding: 5,
+        padding: 7,
         marginTop: 8,
         // backgroundColor: '#E0F8F8',
         backgroundColor: '#e6f3ff',
