@@ -61,7 +61,7 @@ class MapComponent extends Component {
 
                 this.setState({ initialPosition: initialRegion });
             },
-            (error) => Alert.alert('Bad conncstion'),
+            (error) => Alert.alert('Bad connction'),
             { enableHighAccuracy: true, timeout: 200000, maximumAge: 10000 });
     }
 
