@@ -4,7 +4,8 @@ import { Card, Button, Section, TextInputt, CardSection } from './common';
 
 export default class AddProduct extends Component {
     state = {
-        title: '', product_title: '',
+        title: '',
+        product_title: '',
         product_description_en: '',
         product_description: '',
         category: 'None',

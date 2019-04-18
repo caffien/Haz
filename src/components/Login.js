@@ -3,58 +3,58 @@ import { Card, Button, Section, TextInputt } from './common';
 
 class Login extends Component {
 
-  render() {
-	    return (
+    render() {
+        return (
 
-        			<Card>
-              <Section>
-                <TextInputt
-                label="الاسم "
-                  placeholder=" الاسم"
-                />
+            <Card>
+                <Section>
+                    <TextInputt
+                        label="الاسم "
+                        placeholder=" الاسم"
+                    />
 
-              </Section>
-        				<Section>
-        					<TextInputt
-        					label="البريد الإلكتروني"
-        						placeholder="البريد الإلكتروني"
-        					/>
-        				</Section>
-
-        				<Section>
-        					<TextInputt
-        						secureTextEntry
-        						label="كلمة المرور"
-        						placeholder="كلمة المرور"
-
-        					/>
-        				</Section>
+                </Section>
+                <Section>
+                    <TextInputt
+                        label="البريد الإلكتروني"
+                        placeholder="البريد الإلكتروني"
+                    />
+                </Section>
 
                 <Section>
-        					<TextInputt
-        						secureTextEntry
-        						label="تاكيد كلمة المرور "
-        						placeholder="تاكيدكلمة المرور "
-        					/>
-        				</Section>
+                    <TextInputt
+                        secureTextEntry
+                        label="كلمة المرور"
+                        placeholder="كلمة المرور"
+
+                    />
+                </Section>
 
                 <Section>
-        					<TextInputt
-        					label=" رقم الجوال"
-        						placeholder="رقم الجوال "
+                    <TextInputt
+                        secureTextEntry
+                        label="تاكيد كلمة المرور "
+                        placeholder="تاكيدكلمة المرور "
+                    />
+                </Section>
 
-        					/>
-        				</Section>
+                <Section>
+                    <TextInputt
+                        label=" رقم الجوال"
+                        placeholder="رقم الجوال "
 
-        				<Section>
-                <Button >
-                تابع !
-                </Button>
-        				</Section>
-        			</Card>
-	    );
-	  }
-	}
+                    />
+                </Section>
+
+                <Section>
+                    <Button>
+                        تابع !
+                    </Button>
+                </Section>
+            </Card>
+        );
+    }
+}
 
 
-	export default Login;
+export default Login;

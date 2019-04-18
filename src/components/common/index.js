@@ -8,3 +8,4 @@ export * from './Spinner';
 export * from './TextInputt';
 export * from './Section';
 export * from './TextInputtE';
+export * from './Swiper';
