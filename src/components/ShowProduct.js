@@ -57,7 +57,7 @@ export default class ShowProduct extends Component {
                     </View>
                 </Card>
 
-                <Divider style={{ marginTop: 20, marginBottom: 50 }}/>
+                <Divider style={{ marginTop: 20, marginBottom: 50, height: 0 }}/>
 
                 <Card
                     dividerStyle={{ height: 0, marginBottom: 0 }}
