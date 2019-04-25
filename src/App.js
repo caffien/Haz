@@ -10,9 +10,11 @@ import GeolocationExample from './components/GeolocationExample.js';
 import ShowProduct from './components/ShowProduct.js';
 import GetLocationPage from './components/GetLocationPage.js';
 import Swiper2 from './components/common/Swiper';
+import NotificationPage from './components/NotificationPage';
 
 
 const AppNavigator = createBottomTabNavigator({
+
         Home: {
             screen: AccountPage,
             navigationOptions: {
@@ -47,7 +49,9 @@ class App extends Component {
 
     render() {
         return (
-            <Csss/>
+            <NotificationPage/>
+
+
         );
     }
 }
