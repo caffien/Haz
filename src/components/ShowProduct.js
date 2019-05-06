@@ -8,6 +8,7 @@ import { Swiper2 } from './common';
 export default class ShowProduct extends Component {
 
     state = { price: 1200, timeLeft: '5d, 2h', text: '' };
+
     // TODO: add favorite button
     render() {
         return (

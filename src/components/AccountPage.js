@@ -3,6 +3,7 @@ import { ScrollView, View } from 'react-native';
 import { Avatar, Button, Card, Divider, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { AccountCardSection } from './common/AccountCardSection';
+import NotificationPage from './NotificationPage';
 
 
 export default class AccountPage extends Component {
@@ -10,6 +11,7 @@ export default class AccountPage extends Component {
     render() {
         return (
             <ScrollView>
+                {console.log(this)}
                 <View style={styles.twoButtonsHeader}>
                     <Button
                         containerViewStyle={{ alignSelf: 'stretch', height: 20, borderWidth: 1 }}
@@ -49,9 +51,9 @@ export default class AccountPage extends Component {
                 <Card containerStyle={styles.containerStyle}>
 
                     <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('ShowProducts')}
                         IconName={'bell-o'}
                         color={'#37c'}
-                        text={'Messages'}
                         size={15}
                         containerStyle={{ marginTop: 0, padding: 0 }}
                         text={'Your products'}
@@ -59,7 +61,9 @@ export default class AccountPage extends Component {
 
                     />
                     <Divider style={styles.divider}/>
+
                     <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('NotificationPage')}
                         IconName={'bell-o'}
                         color={'#37c'}
                         text={'Messages'}

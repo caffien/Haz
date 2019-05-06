@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, StyleSheet, Dimensions, Animated } from 'react-native';
+import { ScrollView, View, StyleSheet, Dimensions, Animated, Alert } from 'react-native';
 import { Button, ListItem, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -30,7 +30,6 @@ export default class AccountPage extends Component {
     render() {
         const { scrollOffset } = this.state;
         const screenWidth = Dimensions.get('window').width;
-
         const list = [
             {
                 name: 'Amy Farha',
@@ -153,20 +152,6 @@ export default class AccountPage extends Component {
         return (
             <View style={styles2.container}>
 
-                <View style={styles.backButtonStyle}>
-                    <Button
-                        containerViewStyle={{ alignSelf: 'stretch' }}
-                        buttonStyle={styles.button}
-                        icon={
-                            <Icon
-                                allowFontScaling
-                                name="chevron-left"
-                                size={20}
-                                color="#ccc"
-                            />}
-                    />
-                </View>
-
                 <Animated.View
                     style={[
                         styles2.header,
@@ -199,6 +184,7 @@ export default class AccountPage extends Component {
                             }),
                         }]}
                     >Notification</Animated.Text>
+
                     <Animated.View
                         style={{
                             paddingTop: 50,
@@ -227,11 +213,27 @@ export default class AccountPage extends Component {
                                 leftAvatar={{ source: { uri: l.avatar_url } }}
                                 title={l.name}
                                 subtitle={l.subtitle}
-                                onPress={() => console.log(this)}
                             />
                         ))
                     }
+
                 </ScrollView>
+
+                <View style={styles.backButtonStyle}>
+                    <Button
+                        onPress={() => this.props.navigation.pop()}
+                        containerViewStyle={{ alignSelf: 'stretch' }}
+                        buttonStyle={styles.button}
+                        icon={
+                            <Icon
+                                allowFontScaling
+                                name="chevron-left"
+                                size={20}
+                                color="#ccc"
+                            />}
+                    />
+                </View>
+
             </View>
         );
     }
@@ -277,7 +279,7 @@ const styles2 = StyleSheet.create({
         paddingBottom: 8,
     },
     listItem: {
-        height: 200,
+        height: '20%',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
