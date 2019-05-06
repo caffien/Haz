@@ -1,97 +1,172 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Card, CardSection, Button } from './common';
-import { Icon } from 'react-native-elements';
+import { ScrollView, View } from 'react-native';
+import { Avatar, Button, Card, Divider, Text } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { AccountCardSection } from './common/AccountCardSection';
+import NotificationPage from './NotificationPage';
 
 
 export default class AccountPage extends Component {
 
     render() {
         return (
-            <View>
+            <ScrollView>
+                {console.log(this)}
                 <View style={styles.twoButtonsHeader}>
-                    <Button CustomStyle={styles.button}/>
-                    <Button CustomStyle={styles.button}/>
-                    {/*<Button></Button>*/}
+                    <Button
+                        containerViewStyle={{ alignSelf: 'stretch', height: 20, borderWidth: 1 }}
+                        buttonStyle={styles.button}
+                        icon={
+                            <Icon
+                                name='sign-out' size={19}
+                                color={'#ff8b8b'}
+                            />
+                        }
+                    />
+                    <Button
+                        buttonStyle={styles.button}
+                        icon={
+                            <Icon
+                                name='cog'
+                                size={19}
+                                color={'#8e96a2'}
+                            />
+                        }
+                    />
                 </View>
 
                 <View style={styles.header}>
-                    <Icon name='rowing' size={50}/>
-                    <Text>
-                        Username
-                    </Text>
+                    <Text style={styles.username}>Suliman </Text>
+                    <Avatar
+                        title={'s'}
+                        size="large"
+                        rounded
+                        source={{
+                            uri:
+                                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                        }}
+                    />
                 </View>
 
-                <View>
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                <Card containerStyle={styles.containerStyle}>
+
+                    <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('ShowProducts')}
+                        IconName={'bell-o'}
+                        color={'#37c'}
+                        size={15}
+                        containerStyle={{ marginTop: 0, padding: 0 }}
+                        text={'Your products'}
+                        buttonStyle={styles.button2}
+
                     />
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                    <Divider style={styles.divider}/>
+
+                    <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('NotificationPage')}
+                        IconName={'bell-o'}
+                        color={'#37c'}
+                        text={'Messages'}
+                        size={15}
+                        text={'Notifications'}
+                        buttonStyle={styles.button2}
                     />
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                    <Divider style={styles.divider}/>
+                    <AccountCardSection
+                        IconName={'bell-o'}
+                        color={'#37c'}
+                        text={'Messages'}
+                        size={15}
+                        text={'Haz'}
+                        buttonStyle={styles.button2}
                     />
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                    <Divider style={styles.divider}/>
+                    <AccountCardSection
+
+                        IconName={'bell-o'}
+                        color={'#37c'}
+                        text={'Messages'}
+                        size={15}
+                        buttonStyle={styles.button2}
                     />
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                    <Divider style={styles.divider}/>
+                    <AccountCardSection
+                        IconName={'bell-o'}
+                        color={'#37c'}
+                        text={'Messages'}
+                        size={15}
+                        text={'Favorite'}
+                        buttonStyle={styles.button2}
                     />
 
-                </View>
+                </Card>
 
-                <View style={{ marginTop: 40 }}>
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                <Card containerStyle={styles.containerStyle}>
+                    <AccountCardSection
+                        text={'Help'}
+                        buttonStyle={styles.button2}
                     />
-                    <CardSection
-                        text={'Good stuff'}
-                        CustomStyle={styles.button}
+                    <Divider style={styles.divider}/>
+                    <AccountCardSection
+                        text={'Suggestions'}
+                        buttonStyle={styles.button2}
                     />
 
-                </View>
+                </Card>
 
-            </View>
+            </ScrollView>
         );
     }
 
 }
 const styles = {
     button: {
-        height: 20,
-        flex: 0,
-        alignSelf: 'stretch',
         backgroundColor: '#fff',
-        borderRadius: 5,
-        borderWidth: 1.5,
-        borderColor: '#007aff',
-        marginLeft: 20,
-        marginRight: 20,
-        justifyContent: 'center'
+    },
+    button2: {
+        margin: 5,
+        padding: 5,
+        borderRadius: 50,
+        backgroundColor: '#e2e4e8',
+        borderColor: '#665760'
     },
     twoButtonsHeader: {
         height: 50,
-        borderWidth: 1.5,
         flexDirection: 'row-reverse',
         alignSelf: 'flex-start',
         backgroundColor: '#fff',
         marginTop: 40,
+        marginRight: 15,
     },
     header: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        margin: 10,
+        padding: 15,
         height: 80,
-        borderWidth: 1.5,
-        flexDirection: 'row-reverse',
-        // alignSelf: 'stretch',
-        // alignSelf: 'flex-end',
         backgroundColor: '#fff',
         marginTop: 40,
-
+    },
+    containerStyle: {
+        margin: 20,
+        borderRadius: 15,
+        padding: 5,
+        paddingTop: 5,
+        shadowOffset: { width: 0, height: 2, },
+        shadowColor: '#bdb',
+        shadowOpacity: 0.5,
+        shadowRadius: 10,
+    },
+    divider: {
+        margin: 14
+    },
+    username: {
+        padding: 10,
+        fontSize: 34,
+        fontWeight: '900',
+        color: '#154c58',
     }
 };

@@ -1,24 +1,24 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 
 const Section = (props) => {
-	return (
-	<View style={styles.containerStyle}>
-	{props.children}
-	</View>
-	);
+    return (
+        <View style={styles.containerStyle}>
+            {props.children}
+        </View>
+    );
 };
 
 const styles = {
-	containerStyle: {
-		borderBottomWidth: 1,
-		backgroundColor: '#e6f3ff',
-		justifyContent: 'flex-start',
-		flexDirection: 'row',
-		borderColor: '#ddd',
-		postion: 'relative'
-	}
-}
+    containerStyle: {
+        borderBottomWidth: 1,
+        backgroundColor: '#e6f3ff',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        borderColor: '#ddd',
+        postion: 'relative'
+    }
+};
 
 export { Section };

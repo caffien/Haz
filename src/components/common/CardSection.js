@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from 'react-native-elements';
 import {
     View, Text
 } from 'react-native';
@@ -7,10 +6,9 @@ import {
 import { Button } from './Button';
 
 
-const CardSection = ({ children, whenPress, text, CustomStyle }) => {
+const CardSection = ({ children, whenPress, text, CustomStyle, containerStyle }) => {
     return (
-        <View style={[styles.containerStyle]}>
-            <Icon name='rowing'/>
+        <View style={[styles.containerStyle, { containerStyle }]}>
             <Text>
                 {text}
             </Text>
@@ -22,15 +20,15 @@ const CardSection = ({ children, whenPress, text, CustomStyle }) => {
 
 const styles = {
     containerStyle: {
-        borderBottomWidth: 1,
+        // borderBottomWidth: 1,
         padding: 7,
         marginTop: 8,
         // backgroundColor: '#E0F8F8',
-        backgroundColor: '#e6f3ff',
+        backgroundColor: '#fff',
         justifyContent: 'space-between',
         flexDirection: 'row-reverse',
         borderColor: '#ddd',
-        postion: 'relative'
+        position: 'relative'
     }
 };
 export { CardSection };
