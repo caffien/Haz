@@ -178,9 +178,10 @@ export default class AccountPage extends Component {
                         style={[styles.header, {
                             // paddingTop: 50,
                             fontSize: scrollOffset.interpolate({
+                                useNativeDriver: true,
                                 inputRange: [0, 200],
-                                outputRange: [26, 20],
-                                extrapolate: 'clamp',
+                                outputRange: [26, 26],
+                                extrapolate: 'clamp'
                             }),
                         }]}
                     >Notification</Animated.Text>
@@ -192,16 +193,18 @@ export default class AccountPage extends Component {
                                 inputRange: [0, 200],
                                 outputRange: [screenWidth * 0.9 - this.state.titleWidth, 0],
                                 extrapolate: 'clamp',
+                                useNativeDriver: true
                             }),
                         }}
                     />
                 </Animated.View>
 
-                <ScrollView
+                <Animated.ScrollView
                     style={{ flex: 1, width: '100%', paddingTop: 20 }}
                     contentContainerStyle={{ width: '100%' }}
                     onScroll={this.onScroll}
-                    scrollEventThrottle={20}
+                    scrollEventThrottle={15}
+                    useNativeDriver
                 >
                     {
                         list.map((l, i) => (
@@ -217,7 +220,7 @@ export default class AccountPage extends Component {
                         ))
                     }
 
-                </ScrollView>
+                </Animated.ScrollView>
 
                 <View style={styles.backButtonStyle}>
                     <Button

@@ -11,7 +11,6 @@ export default class AccountPage extends Component {
     render() {
         return (
             <ScrollView>
-                {console.log(this)}
                 <View style={styles.twoButtonsHeader}>
                     <Button
                         containerViewStyle={{ alignSelf: 'stretch', height: 20, borderWidth: 1 }}

@@ -27,8 +27,6 @@ export default class MyCarousel extends Component {
         />);
     }
 
-
-
     render() {
         const { slider1ActiveSlide } = this.state;
         return (
