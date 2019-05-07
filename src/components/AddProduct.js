@@ -1,8 +1,48 @@
 import React, { Component } from 'react';
-import { Text, View, Alert, Picker } from 'react-native';
+import { Text, View, Alert, Picker, Dimensions } from 'react-native';
+import SideMenu from 'react-native-side-menu';
+
 import { Card, Button, Section, TextInputt, CardSection } from './common';
 
+import Menu from './Menu';
+
+const window = Dimensions.get('window');
+
 export default class AddProduct extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+
+    this.state = {
+      isOpen: false,
+      selectedItem: 'About',
+      title: '',
+      product_title: '',
+      product_description_en: '',
+      product_description: '',
+      category: 'None',
+      itemValue: '',
+      categories: []
+    };
+
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
+
+  updateMenuState(isOpen) {
+    this.setState({ isOpen });
+  }
+
+  onMenuItemSelected = item =>
+    this.setState({
+      isOpen: false,
+      selectedItem: item,
+    });
     state = {
         title: '',
         product_title: '',
@@ -168,14 +208,30 @@ export default class AddProduct extends Component {
     }
 
     render() {
+      const menu = <Menu onItemSelected={this.onMenuItemSelected} />;
+
         return (
-            <View>
+            <View  style={{
+            backgroundColor: '#F5FCFF'}}>
+            <View
+      style={{ width: window.width,
+            height: window.height }}
+            />
+            <SideMenu
+              menu={menu}
+              isOpen={this.state.isOpen}
+              onChange={isOpen => this.updateMenuState(isOpen)}
+            >
+            <View style={{ flex:1,
+            backgroundColor: '#F5FCFF'}}>
                 <Card>
                     {this.ShowList()}
                 </Card>
                 <View style={{ marginTop: 50 }}>
                     {this.Screen()}
                 </View>
+                </View>
+                </SideMenu>
             </View>
 
 
