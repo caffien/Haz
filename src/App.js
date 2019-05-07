@@ -14,6 +14,7 @@ import Swiper2 from './components/common/Swiper';
 import NotificationPage from './components/NotificationPage';
 import MyCarousel from './components/MyCarousel';
 import HomePage from './components/HomePage';
+import Basic from './components/Basic';
 
 
 const AppNavigator = createBottomTabNavigator({

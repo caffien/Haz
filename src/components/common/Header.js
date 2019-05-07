@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 
 // make a Component
 const Header = (props) =>
-// const { textStyle, viewStyle } = styles;
+// const { textStyle, viewStyle } = Styles;
  (
 <View style={styles.viewStyle}>
   <Text style={styles.textStyle}> {props.headerText} </Text>
@@ -12,7 +12,7 @@ const Header = (props) =>
 </View>
 );
 //const Header = () => {
-// const { textStyle, viewStyle } = styles;
+// const { textStyle, viewStyle } = Styles;
 // return (
 // <View style={viewStyle}>
 //   <Text style={textStyle}> Albums! </Text>
