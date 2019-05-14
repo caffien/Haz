@@ -111,10 +111,10 @@ export default Mapz;
 // renderScreen = () => {
 //
 //         return (
-//       <View style={styles.container}>
+//       <View style={Styles.container}>
 //       { this.state.initialPosition.latitude &&
 //         <MapView
-//           style={styles.map}
+//           style={Styles.map}
 //           showsUserLocation
 //           followsUserLocation
 //           userLocationAnnotationTitle='موقعي الحالي'
