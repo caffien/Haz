@@ -67,6 +67,13 @@ export default function Menu({ onItemSelected }) {
       >
         Contacts
       </Text>
+      <Text
+          onPress={() => this.props.navigation.navigate('Login')
+          }
+          style={styles.item}
+      >
+        Login
+      </Text>
     </ScrollView>
   );
 }
