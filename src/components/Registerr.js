@@ -32,7 +32,7 @@ class Registerr extends Component {
                                 <Icon
                                     name='user'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -50,9 +50,9 @@ class Registerr extends Component {
                             placeholder='البريد الالكتروني '
                             rightIcon={
                                 <Icon
-                                    name='user'
+                                    name='at'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -71,9 +71,9 @@ class Registerr extends Component {
                             secureTextEntry
                             rightIcon={
                                 <Icon
-                                    name='user'
+                                    name='lock'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -92,9 +92,9 @@ class Registerr extends Component {
                             secureTextEntry
                             rightIcon={
                                 <Icon
-                                    name='user'
+                                    name='lock'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -112,9 +112,9 @@ class Registerr extends Component {
                             placeholder='رقم الجوال '
                             rightIcon={
                                 <Icon
-                                    name='user'
+                                    name='phone'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -195,6 +195,7 @@ const styles = {
     },
     font: {
         fontSize: 15,
+        color: 'white'
 
     }
 };

@@ -31,9 +31,9 @@ class Login extends Component {
                             placeholder='البريد الالكتروني '
                             rightIcon={
                                 <Icon
-                                    name='user'
+                                    name='at'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -52,9 +52,9 @@ class Login extends Component {
                             secureTextEntry
                             rightIcon={
                                 <Icon
-                                    name='user'
+                                    name='lock'
                                     size={20}
-                                    color='black'
+                                    color='white'
                                 />
                             }
                         />
@@ -141,6 +141,7 @@ const styles = {
     },
     font: {
         fontSize: 15,
+        color: 'white'
 
     }
 };
