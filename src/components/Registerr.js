@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Dimensions, ScrollView, View, TouchableOpacity, Text } from 'react-native';
+import { Dimensions, TouchableOpacity, View, Text } from 'react-native';
+// import { View as x }  from 'react-native';
 import SideMenu from 'react-native-side-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Card, Button } from 'react-native-elements';
@@ -8,18 +9,36 @@ import Menu from './Menu';
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-class Login extends Component {
+class Registerr extends Component {
 
     render() {
         return (
-            <View
-                style={{
-                    marginTop: 50,
-                    backgroundColor: '#2a2e43',
-                    height: screenHeight,
-                    width: screenWidth
-                }}
-            >
+            <View style={{
+                marginTop: 50,
+                backgroundColor: '#2a2e43',
+                height: screenHeight,
+                width: screenWidth
+            }}>
+                <Card containerStyle={styles.containerStyle}>
+                    <View style={{ marginTop: 10, marginBottom: 10 }}>
+                        <Input
+                            inputStyle={styles.font}
+                            textAlign={'right'}
+                            inputContainerStyle={{ borderBottomWidth: 0 }}
+                            placeholderTextColor={'#959dad'}
+                            placeholderTextSize={{ fontSize: 10 }}
+                            placeholder='الاسم الكامل'
+                            rightIcon={
+                                <Icon
+                                    name='user'
+                                    size={20}
+                                    color='white'
+                                />
+                            }
+                        />
+                    </View>
+
+                </Card>
                 <Card containerStyle={styles.containerStyle}>
                     <View style={{ marginTop: 10, marginBottom: 10 }}>
                         <Input
@@ -61,23 +80,58 @@ class Login extends Component {
                     </View>
 
                 </Card>
+                <Card containerStyle={styles.containerStyle}>
+                    <View style={{ marginTop: 10, marginBottom: 10 }}>
+                        <Input
+                            inputStyle={styles.font}
+                            textAlign={'right'}
+                            inputContainerStyle={{ borderBottomWidth: 0 }}
+                            placeholderTextColor={'#959dad'}
+                            placeholderTextSize={{ fontSize: 10 }}
+                            placeholder='اعادة كلمة المرور '
+                            secureTextEntry
+                            rightIcon={
+                                <Icon
+                                    name='lock'
+                                    size={20}
+                                    color='white'
+                                />
+                            }
+                        />
+                    </View>
+
+                </Card>
+                <Card containerStyle={styles.containerStyle}>
+                    <View style={{ marginTop: 10, marginBottom: 10 }}>
+                        <Input
+                            inputStyle={styles.font}
+                            textAlign={'right'}
+                            inputContainerStyle={{ borderBottomWidth: 0 }}
+                            placeholderTextColor={'#959dad'}
+                            placeholderTextSize={{ fontSize: 10 }}
+                            placeholder='رقم الجوال '
+                            rightIcon={
+                                <Icon
+                                    name='phone'
+                                    size={20}
+                                    color='white'
+                                />
+                            }
+                        />
+                    </View>
+
+                </Card>
                 <View style={{ marginTop: 10, marginBottom: 10 }}>
                     <Button
                         titleStyle={{ fontSize: 20 }}
                         buttonStyle={styles.buttonStyle}
-                        title="دخول !"
+                        title="تابع !"
                     />
-                </View>
-                <View style={{width: (screenWidth * 0.95) ,alignItems: 'flex-end', marginTop: (screenHeight * 0.5)}}>
-                    <TouchableOpacity>
-                        <Text style={{color: 'white'}}>
-                            هل نسيت كلمة المرور ؟
-                        </Text>
-                    </TouchableOpacity>
                 </View>
 
 
             </View>
+
         );
     }
 }
@@ -146,4 +200,4 @@ const styles = {
     }
 };
 
-export default Login;
+export default Registerr;

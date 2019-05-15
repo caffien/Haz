@@ -8,19 +8,22 @@ import {
 } from 'react-navigation';
 import AccountPage from './components/AccountPage.js';
 import GeolocationExample from './components/GeolocationExample.js';
-import ShowSingleProduct from './components/ShowSingleProduct.js';
+import ShowProduct from './components/ShowProduct.js';
 import GetLocationPage from './components/GetLocationPage.js';
 import Swiper2 from './components/common/Swiper';
 import NotificationPage from './components/NotificationPage';
 import MyCarousel from './components/MyCarousel';
 import HomePage from './components/HomePage';
-import Basic from './components/Basic';
+import Login from './components/Login';
+import Registerr from './components/Registerr';
+import LoginAndRegister from './components/LoginAndRegister';
+
 
 
 const AppNavigator = createBottomTabNavigator({
 
         Home: {
-            screen: HomePage,
+            screen: LoginAndRegister,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) =>
                     <Icon name="home" size={25} color={tintColor}/>
@@ -54,6 +57,7 @@ const RootStack = createStackNavigator({
         screen: AppNavigator,
     },
     NotificationPage: {
+
         screen: NotificationPage,
     },
     ShowProducts: {
@@ -62,6 +66,9 @@ const RootStack = createStackNavigator({
     ShowSingleProduct: {
         screen: ShowSingleProduct,
     },
+    // Login: {
+    //     screen: Login,
+    // },
 }, {
     headerMode: 'none'
 

@@ -8,7 +8,7 @@
     "ios": "react-native run-ios",
     "run-ios-suliman": "react-native run-ios --device \"SlomTheUncle\"",
     "rc-start": "npm start -- --reset-cache",
-    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",
+    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "clean-start": "npm run clean && npm run rc-start",
     "fresh-install": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build/ModuleCache/* && rm -rf node_modules/ && npm cache clean --force && npm install",
     "fresh-start": "npm run fresh-install && npm run rc-start",
@@ -26,13 +26,16 @@
     "react-native-linear-gradient": "^2.5.4",
     "react-native-maps": "^0.23.0",
     "react-native-navigation": "^2.16.0",
+    "react-native-router-flux": "^4.0.6",
     "react-native-scripts": "^2.0.1",
     "react-native-side-menu": "^1.1.3",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-swiper": "^1.5.14",
     "react-native-vector-icons": "^6.4.2",
     "react-native-web-swiper": "^1.14.0",
-    "react-navigation": "^3.6.1"
+    "react-navigation": "^3.6.1",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
