@@ -4,6 +4,7 @@ import { Avatar, Button, Card, Divider, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { AccountCardSection } from './common/AccountCardSection';
 import NotificationPage from './NotificationPage';
+import commonStyles from '../styles/commonStyles';
 
 
 export default class AccountPage extends Component {
@@ -47,7 +48,7 @@ export default class AccountPage extends Component {
                     />
                 </View>
 
-                <Card containerStyle={styles.containerStyle}>
+                <Card containerStyle={commonStyles.cardStyle}>
 
                     <AccountCardSection
                         whenPress={() => this.props.navigation.navigate('ShowProducts')}

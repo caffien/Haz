@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { Swiper2 } from './common';
 
 
-export default class ShowProduct extends Component {
+export default class ShowSingleProduct extends Component {
 
     state = { price: 1200, timeLeft: '5d, 2h', text: '' };
 

@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Text } from 'react-native-elements';
 import MyCarousel from './MyCarousel';
 import Styles from '../styles/commonStyles';
+import { ENTRIES1 } from '../static/entries';
+import ShowProducts from './ShowProducts';
 
 
 export default class HomePage extends Component {
     render() {
         return (
-            <View style={Styles.rootContainer}>
-                <Text style={Styles.header}>For You</Text>
-                <MyCarousel/>
-            </View>
+            <ScrollView style={Styles.rootContainer}>
+
+                {/*<Text style={[Styles.header]}>For You</Text>*/}
+                {/*<MyCarousel data={ENTRIES1}/>*/}
+
+                <Text style={[Styles.header]}>Last Added Products</Text>
+                <ShowProducts data={ENTRIES1}/>
+
+            </ScrollView>
         );
     }
 }

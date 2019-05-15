@@ -8,7 +8,7 @@ import {
 } from 'react-navigation';
 import AccountPage from './components/AccountPage.js';
 import GeolocationExample from './components/GeolocationExample.js';
-import ShowProduct from './components/ShowProduct.js';
+import ShowSingleProduct from './components/ShowSingleProduct.js';
 import GetLocationPage from './components/GetLocationPage.js';
 import Swiper2 from './components/common/Swiper';
 import NotificationPage from './components/NotificationPage';
@@ -59,8 +59,8 @@ const RootStack = createStackNavigator({
     ShowProducts: {
         screen: MyCarousel,
     },
-    ShowProduct: {
-        screen: ShowProduct,
+    ShowSingleProduct: {
+        screen: ShowSingleProduct,
     },
 }, {
     headerMode: 'none'
@@ -77,7 +77,7 @@ class App extends Component {
     }
 }
 
-// { /*<ShowProduct />*/
+// { /*<ShowSingleProduct />*/
 // }
 
 export default App;

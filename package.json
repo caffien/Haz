@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "ios": "react-native run-ios",
+    "run-ios-suliman": "react-native run-ios --device \"SlomTheUncle\"",
     "rc-start": "npm start -- --reset-cache",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean",
     "clean-start": "npm run clean && npm run rc-start",

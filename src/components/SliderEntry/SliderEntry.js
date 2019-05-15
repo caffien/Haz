@@ -5,15 +5,16 @@ import { withNavigation } from 'react-navigation';
 import { ParallaxImage } from 'react-native-snap-carousel';
 import styles from '../../styles/SliderEntry.style';
 
+
 class SliderEntry extends Component {
-
-
     static propTypes = {
         data: PropTypes.object.isRequired,
         even: PropTypes.bool,
         parallax: PropTypes.bool,
-        parallaxProps: PropTypes.object
+        parallaxProps: PropTypes.object,
+        onPress: PropTypes.func
     };
+
 
     get image() {
         const { data: { illustration }, parallax, parallaxProps, even } = this.props;
@@ -52,9 +53,7 @@ class SliderEntry extends Component {
             <TouchableOpacity
                 activeOpacity={1}
                 style={styles.slideInnerContainer}
-                onPress={() =>
-                    this.props.onPress()
-                }
+                onPress={this.props.onPress()}
             >
                 <View style={styles.shadow}/>
                 <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
@@ -75,4 +74,4 @@ class SliderEntry extends Component {
     }
 }
 
-export default withNavigation(SliderEntry);
+export default SliderEntry;
