@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
-    createBottomTabNavigator,
     createAppContainer,
+    createBottomTabNavigator,
     createStackNavigator
 } from 'react-navigation';
 import AccountPage from './components/AccountPage.js';
 import GeolocationExample from './components/GeolocationExample.js';
-import ShowProduct from './components/ShowProduct.js';
-import GetLocationPage from './components/GetLocationPage.js';
-import Swiper2 from './components/common/Swiper';
 import NotificationPage from './components/NotificationPage';
 import MyCarousel from './components/MyCarousel';
-import HomePage from './components/HomePage';
-import Login from './components/Login';
-import Registerr from './components/Registerr';
 import LoginAndRegister from './components/LoginAndRegister';
-
+import ShowSingleProduct from './components/ShowSingleProduct';
+import HomePage from './components/HomePage';
 
 
 const AppNavigator = createBottomTabNavigator({
 
         Home: {
-            screen: LoginAndRegister,
+            screen: HomePage,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) =>
                     <Icon name="home" size={25} color={tintColor}/>
@@ -63,6 +57,9 @@ const RootStack = createStackNavigator({
     ShowProducts: {
         screen: MyCarousel,
     },
+    LoginAndRegister: {
+        screen: LoginAndRegister,
+    },
     ShowSingleProduct: {
         screen: ShowSingleProduct,
     },
@@ -73,13 +70,13 @@ const RootStack = createStackNavigator({
     headerMode: 'none'
 
 });
-const Csss = createAppContainer(RootStack);
+const AppContainer = createAppContainer(RootStack);
 
 class App extends Component {
 
     render() {
         return (
-            <Csss/>
+            <AppContainer/>
         );
     }
 }

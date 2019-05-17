@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card, Divider, Text, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { Swiper2 } from './common';
+import commonStyles from '../styles/commonStyles';
 
 
 export default class ShowSingleProduct extends Component {
@@ -96,7 +97,7 @@ export default class ShowSingleProduct extends Component {
                                         color="white"
                                     />
                                 }
-                                titleStyle={styles.titleStyle}
+                                titleStyle={commonStyles.titleStyle}
                             />
                         </View>
                         <Input
@@ -136,12 +137,6 @@ export default class ShowSingleProduct extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         // marginBottom: 40,
-    },
-    titleStyle: {
-        fontSize: 14,
-        alignSelf: 'flex-start',
-        margin: 0
-        // titleNumberOfLines: 0
     },
     textStyle: {
         color: '#29a',

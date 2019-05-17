@@ -13,16 +13,22 @@ const commonStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         paddingTop: 10,
+
     },
     cardStyle: {
-        margin: 20,
+        borderWidth: 0,
         borderRadius: 15,
-        padding: 5,
-        paddingTop: 5,
+        padding: 3,
         shadowOffset: { width: 0, height: 2, },
-        shadowColor: '#bdb',
-        shadowOpacity: 0.5,
+        shadowColor: '#466366',
+        shadowOpacity: 0.1,
         shadowRadius: 10,
+    },
+    titleStyle: {
+        fontSize: 14,
+        alignSelf: 'flex-start',
+        margin: 0
+        // titleNumberOfLines: 0
     },
 });
 

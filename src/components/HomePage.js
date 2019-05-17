@@ -12,8 +12,8 @@ export default class HomePage extends Component {
         return (
             <ScrollView style={Styles.rootContainer}>
 
-                {/*<Text style={[Styles.header]}>For You</Text>*/}
-                {/*<MyCarousel data={ENTRIES1}/>*/}
+                <Text style={[Styles.header]}>For You</Text>
+                <MyCarousel data={ENTRIES1}/>
 
                 <Text style={[Styles.header]}>Last Added Products</Text>
                 <ShowProducts data={ENTRIES1}/>
