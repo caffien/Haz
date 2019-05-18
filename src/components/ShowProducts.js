@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         margin: 5,
+        marginLeft: 10,
     },
 
     bottomSideCardStyle: {

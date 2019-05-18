@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     createAppContainer,
@@ -12,6 +13,7 @@ import MyCarousel from './components/MyCarousel';
 import LoginAndRegister from './components/LoginAndRegister';
 import ShowSingleProduct from './components/ShowSingleProduct';
 import HomePage from './components/HomePage';
+import BurgerMenu from './components/BurgerMenu';
 
 
 const AppNavigator = createBottomTabNavigator({
@@ -76,7 +78,11 @@ class App extends Component {
 
     render() {
         return (
-            <AppContainer/>
+            <SafeAreaView >
+                <BurgerMenu>
+                    <AppContainer/>
+                </BurgerMenu>
+            </SafeAreaView>
         );
     }
 }

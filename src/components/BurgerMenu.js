@@ -25,8 +25,6 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {
@@ -41,7 +39,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class Basic extends Component {
+export default class BurgerMenu extends Component {
     constructor(props) {
         super(props);
 
@@ -88,19 +86,7 @@ export default class Basic extends Component {
                     onChange={isOpen => this.updateMenuState(isOpen)}
                 >
                     <View style={styles.container}>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.instructions}>
-                            To get started, edit index.ios.js
-                        </Text>
-                        <Text style={styles.instructions}>
-                            Press Cmd+R to reload,{'\n'}
-                            Cmd+Control+Z for dev menu
-                        </Text>
-                        <Text style={styles.instructions}>
-                            Current selected menu item is: {this.state.selectedItem}
-                        </Text>
+                        {this.props.children}
                     </View>
 
                 </SideMenu>
