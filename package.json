@@ -34,7 +34,8 @@
     "react-native-web-swiper": "^1.14.0",
     "react-navigation": "^3.6.1",
     "react-redux": "^7.0.3",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
