@@ -25,6 +25,7 @@ const AppNavigator = createBottomTabNavigator({
                     <Icon name="home" size={25} color={tintColor}/>
             }
         },
+
         Map: {
             screen: GeolocationExample,
             navigationOptions: {
@@ -43,7 +44,8 @@ const AppNavigator = createBottomTabNavigator({
     {
         tabBarOptions: {
             activeTintColor: 'orange',
-            inactiveTintColor: 'gray'
+            inactiveTintColor: 'gray',
+            style: { marginBottom: 40 },
         },
         headerMode: 'none'
     });
@@ -78,7 +80,7 @@ class App extends Component {
 
     render() {
         return (
-            <SafeAreaView >
+            <SafeAreaView>
                 <BurgerMenu>
                     <AppContainer/>
                 </BurgerMenu>

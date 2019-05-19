@@ -55,7 +55,7 @@ class SliderEntry extends Component {
                 style={styles.slideInnerContainer}
                 onPress={this.props.onPress()}
             >
-                <View style={styles.shadow}/>
+                <View style={styles.rootViewStyle}/>
                 <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
                     {this.image}
                     <View style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]}/>
