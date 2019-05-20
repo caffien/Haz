@@ -6,6 +6,10 @@ import {
     createBottomTabNavigator,
     createStackNavigator
 } from 'react-navigation';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import reducers from './reducers';
 import AccountPage from './components/AccountPage.js';
 import GeolocationExample from './components/GeolocationExample.js';
 import NotificationPage from './components/NotificationPage';
@@ -13,7 +17,7 @@ import MyCarousel from './components/MyCarousel';
 import LoginAndRegister from './components/LoginAndRegister';
 import ShowSingleProduct from './components/ShowSingleProduct';
 import HomePage from './components/HomePage';
-import BurgerMenu from './components/BurgerMenu';
+import Login from './components/Login';
 
 
 const AppNavigator = createBottomTabNavigator({
@@ -25,7 +29,6 @@ const AppNavigator = createBottomTabNavigator({
                     <Icon name="home" size={25} color={tintColor}/>
             }
         },
-
         Map: {
             screen: GeolocationExample,
             navigationOptions: {
@@ -44,8 +47,7 @@ const AppNavigator = createBottomTabNavigator({
     {
         tabBarOptions: {
             activeTintColor: 'orange',
-            inactiveTintColor: 'gray',
-            style: { marginBottom: 40 },
+            inactiveTintColor: 'gray'
         },
         headerMode: 'none'
     });
@@ -55,7 +57,6 @@ const RootStack = createStackNavigator({
         screen: AppNavigator,
     },
     NotificationPage: {
-
         screen: NotificationPage,
     },
     ShowProducts: {
@@ -67,24 +68,28 @@ const RootStack = createStackNavigator({
     ShowSingleProduct: {
         screen: ShowSingleProduct,
     },
-    // Login: {
-    //     screen: Login,
-    // },
+    Login: {
+        screen: Login,
+    },
 }, {
     headerMode: 'none'
 
 });
+
 const AppContainer = createAppContainer(RootStack);
+
 
 class App extends Component {
 
     render() {
+        const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
         return (
-            <SafeAreaView>
-                <BurgerMenu>
-                    <AppContainer/>
-                </BurgerMenu>
-            </SafeAreaView>
+            <Provider store={store} >
+                {/*<SafeAreaView>*/}
+                <AppContainer/>
+                {/*</SafeAreaView>*/}
+            </Provider>
         );
     }
 }

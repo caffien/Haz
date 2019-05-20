@@ -6,12 +6,13 @@ import Styles from '../styles/commonStyles';
 import { ENTRIES1 } from '../static/entries';
 import ShowProducts from './ShowProducts';
 import SearchBarComponent from './common/SearchBarComponent';
+import BurgerMenu from './BurgerMenu';
 
 
 export default class HomePage extends Component {
     render() {
         return (
-
+        <BurgerMenu>
             <ScrollView style={Styles.rootContainer}>
                 <SearchBarComponent/>
                 <Text style={[Styles.header]}>For You</Text>
@@ -21,6 +22,7 @@ export default class HomePage extends Component {
                 <ShowProducts data={ENTRIES1}/>
 
             </ScrollView>
+        </BurgerMenu>
         );
     }
 }

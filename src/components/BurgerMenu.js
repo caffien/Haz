@@ -7,8 +7,17 @@ import {
     TouchableOpacity,
     Dimensions, Alert
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import SideMenu from 'react-native-side-menu';
+import { connect } from 'react-redux';
 import Menu from './Menu';
+import {
+    changeBurgerMenuStatus,
+    setBurgerMenuStatus,
+    setBurgerMenuItem,
+    navBurgerMenuItem
+} from '../actions';
+
 
 const window = Dimensions.get('window');
 
@@ -39,24 +48,19 @@ const styles = StyleSheet.create({
     },
 });
 
-export default class BurgerMenu extends Component {
+class BurgerMenu extends Component {
     constructor(props) {
         super(props);
 
         this.toggle = this.toggle.bind(this);
 
-        this.state = {
-            isOpen: false,
-            selectedItem: 'About',
-        };
+
+        this.onMenuItemSelected = this.onMenuItemSelected.bind(this);
     }
 
-    onMenuItemSelected = item => {
-        console.warn(item);
-        this.props.navigation.navigate('NotificationPage');
-        return this.setState({
-            selectedItem: item,
-        });
+    onMenuItemSelected = (item) => {
+        this.props.setBurgerMenuItem(item);
+        this.props.navBurgerMenuItem(item);
     };
 
     updateMenuState(isOpen) {
@@ -64,9 +68,10 @@ export default class BurgerMenu extends Component {
     }
 
     toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen,
-        });
+        // this.setState({
+        //     isOpen: !this.state.isOpen,
+        // });
+        this.props.openStatusChange();
     }
 
     render() {
@@ -82,8 +87,8 @@ export default class BurgerMenu extends Component {
                 />
                 <SideMenu
                     menu={menu}
-                    isOpen={this.state.isOpen}
-                    onChange={isOpen => this.updateMenuState(isOpen)}
+                    isOpen={this.props.isOpen}
+                    onChange={isOpen => this.props.setBurgerMenuStatus(isOpen)}
                 >
                     <View style={styles.container}>
                         {this.props.children}
@@ -95,3 +100,18 @@ export default class BurgerMenu extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    const { isOpen } = state.burgerMenu;
+    console.log(state.burgerMenu.selectedItem);
+    // const language = state.language.Language;
+
+    return { isOpen };
+};
+
+export default connect(
+    mapStateToProps,
+    {
+        changeBurgerMenuStatus, setBurgerMenuStatus, setBurgerMenuItem, navBurgerMenuItem
+    }
+)(withNavigation(BurgerMenu));

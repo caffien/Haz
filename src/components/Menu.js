@@ -55,24 +55,24 @@ export default function Menu({ onItemSelected }) {
             </View>
 
             <Text
-                onPress={() => Actions.AddProduct()}
+                onPress={() => onItemSelected('HomePage')}
                 style={styles.item}
             >
-                About
+                Home
             </Text>
 
             <Text
-                onPress={() => onItemSelected('dfdfd')}
-                style={styles.item}
-            >
-                Contacts
-            </Text>
-            <Text
-                onPress={() => this.props.navigation.navigate('Login')
-                }
+                onPress={() => onItemSelected('Login')}
                 style={styles.item}
             >
                 Login
+            </Text>
+            <Text
+                onPress={() => onItemSelected('NotificationPage')
+                }
+                style={styles.item}
+            >
+                Notification
             </Text>
         </ScrollView>
     );
