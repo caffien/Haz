@@ -18,6 +18,7 @@ import LoginAndRegister from './components/LoginAndRegister';
 import ShowSingleProduct from './components/ShowSingleProduct';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
+import NavigationService from './NavigationService';
 
 
 const AppNavigator = createBottomTabNavigator({
@@ -85,10 +86,20 @@ class App extends Component {
         const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
         return (
-            <Provider store={store} >
-                {/*<SafeAreaView>*/}
-                <AppContainer/>
-                {/*</SafeAreaView>*/}
+            <Provider store={store}>
+                <SafeAreaView
+                    style={{
+                        flex: 1,
+                        backgroundColor: 'white',
+                        shadowColor: 'transparent',
+                    }}
+                >
+                    <AppContainer
+                        ref={navigatorRef => {
+                            NavigationService.setTopLevelNavigator(navigatorRef);
+                        }}
+                    />
+                </SafeAreaView>
             </Provider>
         );
     }

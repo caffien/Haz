@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-    Dimensions, Alert
-} from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import SideMenu from 'react-native-side-menu';
 import { connect } from 'react-redux';
 import Menu from './Menu';
 import {
     changeBurgerMenuStatus,
-    setBurgerMenuStatus,
+    navBurgerMenuItem,
     setBurgerMenuItem,
-    navBurgerMenuItem
+    setBurgerMenuStatus
 } from '../actions';
 
 
