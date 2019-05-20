@@ -1,8 +1,10 @@
 import React from 'react';
-import { SearchBar } from 'react-native-elements';
-import { View, TouchableOpacity } from 'react-native';
+import { ListItem, SearchBar } from 'react-native-elements';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Overlay from 'react-native-modal-overlay';
+
 
 export default class SearchBarComponent extends React.Component {
 
@@ -13,18 +15,37 @@ export default class SearchBarComponent extends React.Component {
             search: '',
             visible: false,
             picked: null,
-        };
+            list: [
+                {
+                    key: 'LPrice',
+                    name: 'Least Price',
+                    selected: true,
+                },
+                {
+                    key: 'HPrice',
+                    name: 'Highest Price',
+                    selected: true,
+
+                },
+                {
+                    key: 'HRating',
+                    name: 'Highest Rating',
+                    selected: false,
+
+                },
+                {
+                    key: 'NearestProduct',
+                    name: 'Nearest Product',
+                    selected: false,
+
+                }
+            ],
+        }
+        ;
     }
 
     onShow = () => {
         this.setState({ visible: true });
-    };
-
-    onSelect = (picked) => {
-        this.setState({
-            picked,
-            visible: false
-        });
     };
 
     onCancel = () => {
@@ -37,6 +58,40 @@ export default class SearchBarComponent extends React.Component {
     updateSearch = search => {
         this.setState({ search });
     };
+
+    handlePressedItem = (index, item) => {
+        const temp = item;
+        temp.selected = !temp.selected;
+        this.state.list[index] = temp;
+        this.setState(({ list }) => ({
+            list: [
+                ...list.slice(0, index),
+                {
+                    ...list[index],
+                    selected: temp.selected,
+                },
+                ...list.slice(index + 1)
+            ]
+        }));
+    };
+
+
+    keyExtractor = (item, index) => index.toString();
+
+    renderItem = ({ item, index }) => (
+        <ListItem
+            title={item.name}
+            bottomDivider
+            subtitle={item.subtitle}
+            onPress={() => this.handlePressedItem(index, item)}
+            rightIcon={item.selected && <Icon
+                name="check"
+                size={20}
+                color="#454f63"
+            />}
+        />
+
+    );
 
 
     render() {
@@ -72,12 +127,24 @@ export default class SearchBarComponent extends React.Component {
                         size={20}
                         color="#454f63"
                     />
-                    <Modal
-                        isVisible={visible}
-                        onShow={this.onSelect}
-                        onDismess={this.onCancel}
-                    />
                 </TouchableOpacity>
+                <Overlay
+                    visible={visible}
+                    onClose={this.onCancel}
+                    closeOnTouchOutside
+                    childrenWrapperStyle={styles.childrenWrapperStyle}
+                    containerStyle={styles.wrapperStyle}
+                    animationDuration={250}
+                >
+                    <FlatList
+                        scrollEnabled={false}
+                        keyExtractor={this.keyExtractor}
+                        data={this.state.list}
+                        renderItem={this.renderItem}
+                    />
+
+                </Overlay>
+
             </View>
         );
     }
@@ -128,5 +195,28 @@ const styles = {
         backgroundColor: 'rgba(0,0,0,0.85)',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    modalOverlay: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'rgba(0,0,0,0.0)'
+    },
+    childrenWrapperStyle: {
+        alignItems: 'stretch',
+        backgroundColor: 'white',
+        padding: 0,
+        justifyContent: 'center',
+        margin: 10,
+        borderRadius: 10,
+        overflow: 'hidden'
+    },
+    wrapperStyle: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.69)',
     }
 };

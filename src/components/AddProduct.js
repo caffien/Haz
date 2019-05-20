@@ -9,40 +9,40 @@ import Menu from './Menu';
 const window = Dimensions.get('window');
 
 export default class AddProduct extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.toggle = this.toggle.bind(this);
+        this.toggle = this.toggle.bind(this);
 
-    this.state = {
-      isOpen: false,
-      selectedItem: 'About',
-      title: '',
-      product_title: '',
-      product_description_en: '',
-      product_description: '',
-      category: 'None',
-      itemValue: '',
-      categories: []
-    };
+        this.state = {
+            isOpen: false,
+            selectedItem: 'About',
+            title: '',
+            product_title: '',
+            product_description_en: '',
+            product_description: '',
+            category: 'None',
+            itemValue: '',
+            categories: []
+        };
 
-  }
+    }
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  }
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen,
+        });
+    }
 
-  updateMenuState(isOpen) {
-    this.setState({ isOpen });
-  }
+    updateMenuState(isOpen) {
+        this.setState({ isOpen });
+    }
 
-  onMenuItemSelected = item =>
-    this.setState({
-      isOpen: false,
-      selectedItem: item,
-    });
+    onMenuItemSelected = item =>
+        this.setState({
+            isOpen: false,
+            selectedItem: item,
+        });
     state = {
         title: '',
         product_title: '',
@@ -208,29 +208,36 @@ export default class AddProduct extends Component {
     }
 
     render() {
-      const menu = <Menu onItemSelected={this.onMenuItemSelected} />;
+        const menu = <Menu onItemSelected={this.onMenuItemSelected}/>;
 
         return (
-            <View  style={{
-            backgroundColor: '#F5FCFF'}}>
             <View
-      style={{ width: window.width,
-            height: window.height }}
-            />
-            <SideMenu
-              menu={menu}
-              isOpen={this.state.isOpen}
-              onChange={isOpen => this.updateMenuState(isOpen)}
+                style={{
+                    backgroundColor: '#F5FCFF'
+                }}
             >
-            <View style={{ flex:1,
-            backgroundColor: '#F5FCFF'}}>
-                <Card>
-                    {this.ShowList()}
-                </Card>
-                <View style={{ marginTop: 50 }}>
-                    {this.Screen()}
-                </View>
-                </View>
+                <View
+                    style={{
+                        width: window.width,
+                        height: window.height
+                    }}
+                />
+                <SideMenu
+                    menu={menu}
+                    isOpen={this.state.isOpen}
+                    onChange={isOpen => this.updateMenuState(isOpen)}
+                >
+                    <View style={{
+                        flex: 1,
+                        backgroundColor: '#F5FCFF'
+                    }}>
+                        <Card>
+                            {this.ShowList()}
+                        </Card>
+                        <View style={{ marginTop: 50 }}>
+                            {this.Screen()}
+                        </View>
+                    </View>
                 </SideMenu>
             </View>
 
