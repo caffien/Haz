@@ -1,7 +1,6 @@
 import React from 'react';
 import { ListItem, SearchBar } from 'react-native-elements';
 import { FlatList, TouchableOpacity, View } from 'react-native';
-import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Overlay from 'react-native-modal-overlay';
 

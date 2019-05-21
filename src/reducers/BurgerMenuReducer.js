@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
     isOpen: false,
-    selectedItem: 'HomePage',
+    selectedItem: 'HomeTab',
 
 };
 

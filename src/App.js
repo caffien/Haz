@@ -10,24 +10,32 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import AccountPage from './components/AccountPage.js';
-import GeolocationExample from './components/GeolocationExample.js';
-import NotificationPage from './components/NotificationPage';
-import MyCarousel from './components/MyCarousel';
-import LoginAndRegister from './components/LoginAndRegister';
-import ShowSingleProduct from './components/ShowSingleProduct';
-import HomePage from './components/HomePage';
-import Login from './components/Login';
+import AccountTab from './components/Account/AccountTab.js';
+import GeolocationExample from './components/Map/MapTab.js';
+import NotificationPage from './components/Notification/NotificationPage';
+import SliderComponent from './components/common/SliderComponent';
+import LoginAndRegister from './components/Authentication/LoginAndRegister';
+import ShowSingleProduct from './components/Product/ShowSingleProduct';
+import HomeTab from './components/HomeTab';
+import Login from './components/Authentication/Login';
 import NavigationService from './NavigationService';
+import AuctionTab from './components/Auction/AuctionTab';
 
 
 const AppNavigator = createBottomTabNavigator({
 
         Home: {
-            screen: HomePage,
+            screen: HomeTab,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) =>
                     <Icon name="home" size={25} color={tintColor}/>
+            }
+        },
+        Auction: {
+            screen: AuctionTab,
+            navigationOptions: {
+                tabBarIcon: ({ tintColor }) =>
+                    <Icon name="gavel" size={25} color={tintColor}/>
             }
         },
         Map: {
@@ -38,7 +46,7 @@ const AppNavigator = createBottomTabNavigator({
             }
         },
         Account: {
-            screen: AccountPage,
+            screen: AccountTab,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) =>
                     <Icon name="user-o" size={25} color={tintColor}/>
@@ -61,7 +69,7 @@ const RootStack = createStackNavigator({
         screen: NotificationPage,
     },
     ShowProducts: {
-        screen: MyCarousel,
+        screen: SliderComponent,
     },
     LoginAndRegister: {
         screen: LoginAndRegister,
@@ -104,8 +112,5 @@ class App extends Component {
         );
     }
 }
-
-// { /*<ShowSingleProduct />*/
-// }
 
 export default App;
