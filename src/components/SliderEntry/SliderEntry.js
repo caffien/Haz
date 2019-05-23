@@ -38,7 +38,7 @@ class SliderEntry extends Component {
     }
 
     render() {
-        const { data: { title, subtitle }, even } = this.props;
+        const { data: { title, subtitle }, even, slideInnerContainer } = this.props;
 
         const uppercaseTitle = title ? (
             <Text
@@ -52,7 +52,7 @@ class SliderEntry extends Component {
         return (
             <TouchableOpacity
                 activeOpacity={1}
-                style={styles.slideInnerContainer}
+                style={[styles.slideInnerContainer, slideInnerContainer]}
                 onPress={this.props.onPress()}
             >
                 <View style={styles.rootViewStyle}/>

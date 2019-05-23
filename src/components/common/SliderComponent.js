@@ -22,8 +22,12 @@ class SliderComponent extends Component<any, any> {
         this.props.navigation.navigate('ShowSingleProduct');
     };
 
-    _renderItem({ item, index }) {
+    _renderItem({ item, index }, props) {
         return (<SliderEntry
+            slideInnerContainer={props.itemHeight && {
+                height: props.itemHeight,
+
+            }}
             onPress={() => this.someFunc}
             data={item} even={(index + 1) % 2 === 0}
         />);
@@ -31,6 +35,10 @@ class SliderComponent extends Component<any, any> {
 
     render() {
         const { slider1ActiveSlide } = this.state;
+        const enablePagination = this.props.enablePagination === false ? this.props.enablePagination : true;
+        const autoPlay = this.props.autoPlay === false ? this.props.autoPlay : true;
+        const onSnapToItem = typeof this.props.onSnapToItem === 'undefined' ? {} : this.props.onSnapToItem;
+        console.log(enablePagination, this.props.enablePagination);
         return (
             <View style={{ flex: 1 }}>
                 {/*{this.gradient}*/}
@@ -38,7 +46,10 @@ class SliderComponent extends Component<any, any> {
                     <Carousel
                         ref={c => this._slider1Ref = c}
                         data={this.props.data}
-                        renderItem={this._renderItem}
+                        renderItem={({ item, index }) => this._renderItem({
+                            item,
+                            index
+                        }, this.props)}
                         sliderWidth={sliderWidth}
                         itemWidth={itemWidth}
                         hasParallaxImages
@@ -50,12 +61,15 @@ class SliderComponent extends Component<any, any> {
                         contentContainerCustomStyle={styles.sliderContentContainer}
                         loop
                         loopClonesPerSide={2}
-                        autoplay
+                        autoplay={autoPlay}
                         autoplayDelay={1000}
                         autoplayInterval={30000}
-                        onSnapToItem={(index) => this.setState({ slider1ActiveSlide: index })}
+                        onSnapToItem={(index, item) => {
+                            this.setState({ slider1ActiveSlide: index });
+                            this.props.onSnapToItem && this.props.onSnapToItem(index);
+                        }}
                     />
-                    <Pagination
+                    {enablePagination && <Pagination
                         dotsLength={ENTRIES1.length}
                         activeDotIndex={slider1ActiveSlide}
                         containerStyle={styles.paginationContainer}
@@ -66,7 +80,7 @@ class SliderComponent extends Component<any, any> {
                         inactiveDotScale={0.6}
                         carouselRef={this._slider1Ref}
                         tappableDots={!!this._slider1Ref}
-                    />
+                    />}
                 </View>
             </View>
         );
