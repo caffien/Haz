@@ -1,6 +1,7 @@
 import React from 'react';
-import { AppRegistry, Image, StatusBar } from 'react-native';
-import { Container, Content, Text, List, ListItem } from 'native-base';
+import { CachedImage } from 'react-native-cached-image';
+
+import { Container, Content, List, ListItem, Text } from 'native-base';
 
 const routes = ['Home', 'Chat', 'Profile'];
 export default class SideBar extends React.Component {
@@ -8,7 +9,7 @@ export default class SideBar extends React.Component {
         return (
             <Container>
                 <Content>
-                    <Image
+                    <CachedImage
                         source={{
                             uri: 'https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/drawer-cover.png'
                         }}
@@ -19,14 +20,14 @@ export default class SideBar extends React.Component {
                             alignItems: 'center'
                         }}
                     >
-                        <Image
+                        <CachedImage
                             square
                             style={{ height: 80, width: 70 }}
                             source={{
                                 uri: 'https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/logo.png'
                             }}
                         />
-                    </Image>
+                    </CachedImage>
                     <List
                         dataArray={routes}
                         renderRow={data => {

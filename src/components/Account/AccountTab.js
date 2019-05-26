@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { AccountCardSection } from '../common/AccountCardSection';
 import NotificationPage from '../Notification/NotificationPage';
 import commonStyles from '../../styles/commonStyles';
+import { ENTRIES1 } from '../../static/entries';
 
 
 export default class AccountTab extends Component {
@@ -51,7 +52,9 @@ export default class AccountTab extends Component {
                 <Card containerStyle={commonStyles.cardStyle}>
 
                     <AccountCardSection
-                        whenPress={() => this.props.navigation.navigate('ShowProducts')}
+                        whenPress={() => this.props.navigation.navigate('ShowProducts', {
+                            data: ENTRIES1
+                        })}
                         IconName={'bell-o'}
                         color={'#37c'}
                         size={15}

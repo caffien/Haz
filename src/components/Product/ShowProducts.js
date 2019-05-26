@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, View, Image } from 'react-native';
+import { FlatList, Image, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { CachedImage } from 'react-native-cached-image';
 import { Button, Card, Text } from 'react-native-elements';
 import commonStyles from '../../styles/commonStyles';
 import styles2 from '../../styles/SliderEntry.style';
+import getNavigationParams from '../Services/NavigationDataService';
 
 
 export default class ShowProducts extends Component {
@@ -16,9 +18,12 @@ export default class ShowProducts extends Component {
                 containerStyle={[styles.gridItem, commonStyles.cardStyle]}
             >
                 <View style={styles.upperSideCardStyle}>
-                    <Image
-                        source={{ uri: item.illustration }}
+                    <CachedImage
+                        source={{
+                            uri: item.illustration
+                        }}
                         style={[styles2.image, styles.imageStyle]}
+
                     />
 
                     <View style={styles.upperLeftSideCardStyle}>
@@ -49,16 +54,18 @@ export default class ShowProducts extends Component {
         );
     }
 
+
     keyExtractor = (item, index) => index.toString();
 
     render() {
+        console.log(this);
         return (
             <FlatList
                 contentContainerStyle={styles.cardStyle}
                 initialNumToRender={3}
                 keyExtractor={this.keyExtractor}
                 maxToRenderPerBatch={1}
-                data={this.props.data}
+                data={this.props.data || getNavigationParams(this).data}
                 renderItem={ShowProducts.renderItem}
             />
         );
@@ -109,7 +116,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     imageStyle: {
-        width: '55%',
+        alignSelf: 'stretch',
+        width: scale * 0.55,
         height: '100%',
         position: 'relative'
     }

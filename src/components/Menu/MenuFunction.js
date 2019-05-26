@@ -1,43 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Dimensions,
-    StyleSheet,
-    ScrollView,
-    View,
-    Image,
-    Text,
-} from 'react-native';
-const window = Dimensions.get('window');
+import { CachedImage } from 'react-native-cached-image';
+import { Dimensions, ScrollView, StyleSheet, Text, View, } from 'react-native';
+
 const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
 
 const styles = StyleSheet.create({
     menu: {
         flex: 1,
-        width: window.width,
-        height: window.height,
-        backgroundColor: 'gray',
+        // width: window.width,
+        // height: window.height,
+        backgroundColor: 'white',
+        borderRightWidth: 0.2,
+        borderColor: '#bbb',
         padding: 20,
     },
     avatarContainer: {
         marginBottom: 20,
         marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
     },
     avatar: {
         width: 48,
         height: 48,
         borderRadius: 24,
-        flex: 1,
     },
     name: {
-        position: 'absolute',
-        left: 70,
-        top: 20,
+        fontSize: 22,
+        fontWeight: '900',
+        color: '#154c58',
+
     },
     item: {
-        fontSize: 14,
-        fontWeight: '300',
+        fontSize: 18,
+        fontWeight: '600',
         paddingTop: 5,
+        color: '#94ccc1',
     },
 });
 
@@ -45,7 +45,7 @@ export default function MenuFunction({ onItemSelected }) {
     return (
         <ScrollView scrollsToTop={false} style={styles.menu}>
             <View style={styles.avatarContainer}>
-                <Image
+                <CachedImage
                     style={styles.avatar}
                     source={{ uri }}
                 />

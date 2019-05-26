@@ -1,4 +1,4 @@
-import NavigationService from '../NavigationService';
+import NavigationService from '../components/Services/NavigationService';
 
 export const changeBurgerMenuStatus = () => {
     return {

@@ -7,19 +7,20 @@ import {
     createStackNavigator
 } from 'react-navigation';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import AccountTab from './components/Account/AccountTab.js';
-import GeolocationExample from './components/Map/MapTab.js';
+import MapTab from './components/Map/MapTab.js';
 import NotificationPage from './components/Notification/NotificationPage';
-import SliderComponent from './components/common/SliderComponent';
 import LoginAndRegister from './components/Authentication/LoginAndRegister';
 import ShowSingleProduct from './components/Product/ShowSingleProduct';
 import HomeTab from './components/HomeTab';
 import Login from './components/Authentication/Login';
-import NavigationService from './NavigationService';
+import NavigationService from './components/Services/NavigationService';
 import AuctionTab from './components/Auction/AuctionTab';
+import { ENTRIES1 } from './static/entries';
+import ShowProducts from './components/Product/ShowProducts';
 
 
 const AppNavigator = createBottomTabNavigator({
@@ -39,7 +40,7 @@ const AppNavigator = createBottomTabNavigator({
             }
         },
         Map: {
-            screen: GeolocationExample,
+            screen: props => <MapTab {...props} data={ENTRIES1}/>,
             navigationOptions: {
                 tabBarIcon: ({ tintColor }) =>
                     <Icon name="map-marker" size={25} color={tintColor}/>
@@ -69,7 +70,7 @@ const RootStack = createStackNavigator({
         screen: NotificationPage,
     },
     ShowProducts: {
-        screen: SliderComponent,
+        screen: ShowProducts,
     },
     LoginAndRegister: {
         screen: LoginAndRegister,
@@ -99,7 +100,6 @@ class App extends Component {
                     style={{
                         flex: 1,
                         backgroundColor: 'white',
-                        shadowColor: 'transparent',
                     }}
                 >
                     <AppContainer

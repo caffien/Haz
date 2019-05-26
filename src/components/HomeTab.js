@@ -12,17 +12,17 @@ import BurgerMenu from './Menu/BurgerMenu';
 export default class HomeTab extends Component {
     render() {
         return (
-        <BurgerMenu>
-            <ScrollView style={Styles.rootContainer}>
-                <SearchBarComponent/>
-                <Text style={[Styles.header]}>For You</Text>
-                <SliderComponent data={ENTRIES1}/>
+            <BurgerMenu>
+                <ScrollView style={Styles.rootContainer}>
+                    <SearchBarComponent/>
+                    <Text style={[Styles.header]}>For You</Text>
+                    <SliderComponent data={ENTRIES1}/>
 
-                <Text style={[Styles.header]}>Last Added Products</Text>
-                <ShowProducts data={ENTRIES1}/>
+                    <Text style={[Styles.header]}>Last Added Products</Text>
+                    <ShowProducts data={ENTRIES1}/>
 
-            </ScrollView>
-        </BurgerMenu>
+                </ScrollView>
+            </BurgerMenu>
         );
     }
 }

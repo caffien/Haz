@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Dimensions, StyleSheet, View } from 'react-native';
-import MapView, { LatLng, Marker } from 'react-native-maps';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import { ENTRIES1 } from '../../static/entries';
 import SliderComponent from '../common/SliderComponent';
 import BottomDrawerComponent from '../common/BottomDrawer/BottomDrawerComponent';
@@ -18,6 +18,7 @@ const LATITUDE = 37.78825;
 const LONGITUDE = -122.4324;
 const SPACE = 0.01;
 
+
 class MapComponent extends Component {
 
     constructor() {
@@ -29,9 +30,8 @@ class MapComponent extends Component {
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
             },
-            markers: [],
-            marker1: true,
-            marker2: false,
+            data: [],
+
         };
     }
 
@@ -40,44 +40,27 @@ class MapComponent extends Component {
         navigator.geolocation.getCurrentPosition((position) => {
                 const lat = parseFloat(position.coords.latitude);
                 const long = parseFloat(position.coords.longitude);
-                const initialRegion = {
+                const initialPosition = {
                     latitude: lat,
                     longitude: long,
                     latitudeDelta: LATITUDE_DELTA,
                     longitudeDelta: LONGITUDE_DELTA,
                 };
 
-                this.setState({ initialPosition: initialRegion });
                 this.setState({
-                    markers: [
-                        // {
-                        //     latitude: this.state.initialPosition.latitude,
-                        //     longitude: this.state.initialPosition.longitude,
-                        //     title: 'Foo Place',
-                        //     subtitle: '1234 Foo Drive'
-                        // },
-                        {
-                            latitude: this.state.initialPosition.latitude - 0.20,
-                            longitude: this.state.initialPosition.longitude,
-                            title: 'Foo Place',
-                            subtitle: '1234 Foo Drive'
-                        },
-                        // {
-                        //     latitude: this.state.initialPosition.latitude + 0.020,
-                        //     longitude: this.state.initialPosition.longitude,
-                        //     title: 'Foo Place',
-                        //     subtitle: '1234 Foo Drive'
-                        // }
-                    ]
+                    initialPosition,
+                    data: this.props.data
                 });
             },
-            (error) => Alert.alert('Bad connection'),
+            (error) => console.log('Bad connection', error),
             { enableHighAccuracy: true, timeout: 200000, maximumAge: 10000 });
     }
 
 
     getMarkers = () => {
-        return this.state.markers.map((value, key) => {
+        console.log(this);
+        return this.state.data.map((value, key) => {
+            console.log(value, key);
             return (<Marker
                 key={key}
                 title={value.title}
@@ -93,20 +76,22 @@ class MapComponent extends Component {
     };
 
     changePosition = (index) => {
-        this.setState({
-            initialPosition: {
-                latitude: this.state.markers[0].latitude,
-                longitude: this.state.markers[0].longitude,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
-            }
-        });
-        const { latitude, longitude, latitudeDelta, longitudeDelta } = this.state.initialPosition;
+        console.log('change position');
+        const { latitude, longitude, latitudeDelta, longitudeDelta } = this.state.data[index];
+
         this.map.animateToRegion({
             latitude,
             longitude,
             latitudeDelta,
             longitudeDelta
+        });
+        this.setState({
+            initialPosition: {
+                latitude: this.state.data[index].latitude,
+                longitude: this.state.data[index].longitude,
+                latitudeDelta: LATITUDE_DELTA,
+                longitudeDelta: LONGITUDE_DELTA,
+            }
         });
     };
 
@@ -128,6 +113,7 @@ class MapComponent extends Component {
 
                 </MapView>
                 }
+
                 <BottomDrawerComponent containerHeight={height * 0.32}>
                     <SliderComponent
                         onSnapToItem={(index) => this.changePosition(index)}

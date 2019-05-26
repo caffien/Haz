@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { withNavigation } from 'react-navigation';
+import { CachedImage } from 'react-native-cached-image';
 import { ParallaxImage } from 'react-native-snap-carousel';
 import styles from '../../styles/SliderEntry.style';
 
@@ -30,7 +30,7 @@ class SliderEntry extends Component {
                 {...parallaxProps}
             />
         ) : (
-            <Image
+            <CachedImage
                 source={{ uri: illustration }}
                 style={styles.image}
             />
