@@ -21,6 +21,7 @@ import NavigationService from './components/Services/NavigationService';
 import AuctionTab from './components/Auction/AuctionTab';
 import { ENTRIES1 } from './static/entries';
 import ShowProducts from './components/Product/ShowProducts';
+import Settings from './components/Settings/Settings';
 
 
 const AppNavigator = createBottomTabNavigator({
@@ -62,27 +63,54 @@ const AppNavigator = createBottomTabNavigator({
         headerMode: 'none'
     });
 
+const navigationOptions = ({ navigation }) => ({
+    header: null,
+});
+
 const RootStack = createStackNavigator({
     TabBar: {
         screen: AppNavigator,
+        navigationOptions
     },
     NotificationPage: {
         screen: NotificationPage,
+        navigationOptions
     },
     ShowProducts: {
         screen: ShowProducts,
+        navigationOptions
     },
     LoginAndRegister: {
         screen: LoginAndRegister,
+        navigationOptions
     },
     ShowSingleProduct: {
         screen: ShowSingleProduct,
+        navigationOptions
     },
     Login: {
         screen: Login,
+        navigationOptions,
     },
+    Settings: {
+        screen: Settings,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.routeName}`,
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
+
+        })
+
+    }
 }, {
-    headerMode: 'none'
+    headerMode: 'float',
 
 });
 

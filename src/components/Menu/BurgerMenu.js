@@ -72,7 +72,7 @@ class BurgerMenu extends Component {
         const menu = <MenuFunction onItemSelected={this.onMenuItemSelected}/>;
 
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <View
                     style={{
                         width: window.width,

@@ -60,13 +60,22 @@ export default class ShowProducts extends Component {
     render() {
         console.log(this);
         return (
+
             <FlatList
+                columnWrapperStyle={{
+                    margin: 10,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignSelf: 'center',
+
+                }}
                 contentContainerStyle={styles.cardStyle}
                 initialNumToRender={3}
                 keyExtractor={this.keyExtractor}
                 maxToRenderPerBatch={1}
                 data={this.props.data || getNavigationParams(this).data}
                 renderItem={ShowProducts.renderItem}
+                numColumns={2}
             />
         );
     }
@@ -78,12 +87,7 @@ const scale = 155;
 const styles = StyleSheet.create({
     cardStyle: {
         flex: 1,
-        justifyContent: 'space-around',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        margin: 20,
         width: '100%',
-        alignSelf: 'center',
     },
     gridItem: {
         margin: 5,
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
     },
     imageStyle: {
         alignSelf: 'stretch',
-        width: scale * 0.55,
+        width: scale * 0.45,
         height: '100%',
         position: 'relative'
     }

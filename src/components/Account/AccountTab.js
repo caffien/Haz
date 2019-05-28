@@ -6,9 +6,14 @@ import { AccountCardSection } from '../common/AccountCardSection';
 import NotificationPage from '../Notification/NotificationPage';
 import commonStyles from '../../styles/commonStyles';
 import { ENTRIES1 } from '../../static/entries';
+import NavigationService from '../Services/NavigationService';
 
 
 export default class AccountTab extends Component {
+
+    SettingsPressed = () => {
+        NavigationService.navigate('Settings');
+    };
 
     render() {
         return (
@@ -26,6 +31,7 @@ export default class AccountTab extends Component {
                     />
                     <Button
                         buttonStyle={styles.button}
+                        onPress={this.SettingsPressed}
                         icon={
                             <Icon
                                 name='cog'
