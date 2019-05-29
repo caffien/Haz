@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { AsyncStorage } from 'react-native';
 
 import AR from './i18n/locales/AR';
 import EN from './i18n/locales/EN';

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Text, InteractionManager, Animated, ScrollView, StyleSheet, View } from 'react-native';
 import { ListItem, } from 'react-native-elements';
-import { notificationList } from './notificationList';
+import { notificationList } from '../Notification/notificationList';
 
 
-export default class NotificationPage extends Component {
+export default class FavoritePage extends Component {
 
     constructor(props) {
         super(props);
+
+        this.offset = 0;
 
         this.state = {
             scrollOffset: new Animated.Value(0),
@@ -26,6 +28,7 @@ export default class NotificationPage extends Component {
     getView = () => {
         return notificationList.map((l, i) => (
             <ListItem
+                // borderRadius={20}
                 bottomDivider
                 containerStyle={styles.containerStyle}
                 key={i}
@@ -70,8 +73,17 @@ const styles = {
     },
     containerStyle: {
         paddingLeft: 25,
-    },
 
+    },
+    backButtonStyle: {
+        position: 'absolute',
+        top: 40,
+        right: '85%',
+        flexDirection: 'row-reverse',
+        alignSelf: 'flex-start',
+        backgroundColor: 'white',
+        marginRight: 10,
+    },
     button: {
         padding: 10,
         backgroundColor: 'white',

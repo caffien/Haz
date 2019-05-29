@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import BottomDrawer from './BottomDrawer';
 
-const TAB_BAR_HEIGHT = 110;
+const TAB_BAR_HEIGHT = 30;
 
 const BottomDrawerComponent = (props) => {
     return (

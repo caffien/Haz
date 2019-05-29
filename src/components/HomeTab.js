@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { NativeModules, ScrollView } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text, NativeModules, ScrollView } from 'react-native';
 import SliderComponent from './common/SliderComponent';
 import Styles from '../styles/commonStyles';
 import { ENTRIES1 } from '../static/entries';
@@ -15,6 +14,16 @@ export default class HomeTab extends Component {
         return (
             <BurgerMenu>
                 <ScrollView style={Styles.rootContainer}>
+                    <Text
+                        style={[Styles.header, {
+                            fontSize: 35,
+                            paddingTop: 15,
+                            alignSelf: 'center',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            paddingBottom: 20,
+                        }]}
+                    >HAZ</Text>
                     <SearchBarComponent/>
                     <Text style={[Styles.header]}>{translate('ForYou')}</Text>
                     <SliderComponent data={ENTRIES1}/>

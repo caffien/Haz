@@ -58,7 +58,6 @@ export default class ShowProducts extends Component {
     keyExtractor = (item, index) => index.toString();
 
     render() {
-        console.log(this);
         return (
 
             <FlatList

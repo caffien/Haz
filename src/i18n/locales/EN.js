@@ -1,4 +1,6 @@
 export default {
     ForYou: 'For You',
-    LastAddedProducts: 'Last Added Products'
+    LastAddedProducts: 'Last Added Products',
+    Notification: 'Notification'
+
 };

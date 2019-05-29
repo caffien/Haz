@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button, Card, Input } from 'react-native-elements';
 
@@ -10,9 +10,9 @@ class Login extends Component {
 
     render() {
         return (
-            <View
+            <ScrollView
                 style={{
-                    marginTop: 50,
+                    paddingTop: 50,
                     backgroundColor: '#2a2e43',
                     height: screenHeight,
                     width: screenWidth
@@ -66,16 +66,20 @@ class Login extends Component {
                         title="دخول !"
                     />
                 </View>
-                <View style={{width: (screenWidth * 0.95) ,alignItems: 'flex-end', marginTop: (screenHeight * 0.5)}}>
+                <View
+                    style={{
+                        width: (screenWidth * 0.95),
+                        alignItems: 'flex-end',
+                        marginTop: (screenHeight * 0.5)
+                    }}
+                >
                     <TouchableOpacity>
-                        <Text style={{color: 'white'}}>
+                        <Text style={{ color: 'white' }}>
                             هل نسيت كلمة المرور ؟
                         </Text>
                     </TouchableOpacity>
                 </View>
-
-
-            </View>
+            </ScrollView>
         );
     }
 }

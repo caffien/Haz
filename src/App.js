@@ -22,6 +22,10 @@ import AuctionTab from './components/Auction/AuctionTab';
 import { ENTRIES1 } from './static/entries';
 import ShowProducts from './components/Product/ShowProducts';
 import Settings from './components/Settings/Settings';
+import LanguageFlatList from './components/Language/LanguageFlatList';
+import ChatPage from './components/Chat/ChatPage';
+import HazGuaranteePage from './components/Guarantee/HazGuaranteePage';
+import FavoritePage from './components/Favorite/FavoritePage';
 
 
 const AppNavigator = createBottomTabNavigator({
@@ -74,7 +78,19 @@ const RootStack = createStackNavigator({
     },
     NotificationPage: {
         screen: NotificationPage,
-        navigationOptions
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.routeName}`,
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
+
+        })
     },
     ShowProducts: {
         screen: ShowProducts,
@@ -92,6 +108,55 @@ const RootStack = createStackNavigator({
         screen: Login,
         navigationOptions,
     },
+    Haz: {
+        screen: HazGuaranteePage,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.routeName}`,
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
+
+        })
+    },
+    Messages: {
+        screen: ChatPage,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.routeName}`,
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
+
+        })
+    },
+    Favorite: {
+        screen: FavoritePage,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.routeName}`,
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
+
+        })
+
+    },
     Settings: {
         screen: Settings,
         navigationOptions: ({ navigation }) => ({
@@ -107,7 +172,22 @@ const RootStack = createStackNavigator({
             headerBackTitleVisible: false,
 
         })
+    },
+    Language: {
+        screen: LanguageFlatList,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.routeName}`,
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
 
+        })
     }
 }, {
     headerMode: 'float',
@@ -124,18 +204,11 @@ class App extends Component {
 
         return (
             <Provider store={store}>
-                <SafeAreaView
-                    style={{
-                        flex: 1,
-                        backgroundColor: 'white',
+                <AppContainer
+                    ref={navigatorRef => {
+                        NavigationService.setTopLevelNavigator(navigatorRef);
                     }}
-                >
-                    <AppContainer
-                        ref={navigatorRef => {
-                            NavigationService.setTopLevelNavigator(navigatorRef);
-                        }}
-                    />
-                </SafeAreaView>
+                />
             </Provider>
         );
     }

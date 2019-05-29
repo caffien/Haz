@@ -17,25 +17,35 @@ export default class AccountTab extends Component {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView
+                style={{ paddingTop: 40 }}
+            >
                 <View style={styles.twoButtonsHeader}>
                     <Button
-                        containerViewStyle={{ alignSelf: 'stretch', height: 20, borderWidth: 1 }}
+                        containerViewStyle={{
+                            alignSelf: 'stretch',
+                            padding: 15,
+                        }}
                         buttonStyle={styles.button}
                         icon={
                             <Icon
-                                name='sign-out' size={19}
+                                name='sign-out'
+                                size={21}
                                 color={'#ff8b8b'}
                             />
                         }
                     />
                     <Button
+                        containerViewStyle={{
+                            alignSelf: 'stretch',
+                            padding: 15,
+                        }}
                         buttonStyle={styles.button}
                         onPress={this.SettingsPressed}
                         icon={
                             <Icon
                                 name='cog'
-                                size={19}
+                                size={21}
                                 color={'#8e96a2'}
                             />
                         }
@@ -75,23 +85,22 @@ export default class AccountTab extends Component {
                         whenPress={() => this.props.navigation.navigate('NotificationPage')}
                         IconName={'bell-o'}
                         color={'#37c'}
-                        text={'Messages'}
                         size={15}
                         text={'Notifications'}
                         buttonStyle={styles.button2}
                     />
                     <Divider style={styles.divider}/>
                     <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('Haz')}
                         IconName={'bell-o'}
                         color={'#37c'}
-                        text={'Messages'}
                         size={15}
                         text={'Haz'}
                         buttonStyle={styles.button2}
                     />
                     <Divider style={styles.divider}/>
                     <AccountCardSection
-
+                        whenPress={() => this.props.navigation.navigate('Messages')}
                         IconName={'bell-o'}
                         color={'#37c'}
                         text={'Messages'}
@@ -100,9 +109,9 @@ export default class AccountTab extends Component {
                     />
                     <Divider style={styles.divider}/>
                     <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('Favorite')}
                         IconName={'bell-o'}
                         color={'#37c'}
-                        text={'Messages'}
                         size={15}
                         text={'Favorite'}
                         buttonStyle={styles.button2}
@@ -110,13 +119,15 @@ export default class AccountTab extends Component {
 
                 </Card>
 
-                <Card containerStyle={styles.containerStyle}>
+                <Card containerStyle={commonStyles.cardStyle}>
                     <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('NotificationPage')}
                         text={'Help'}
                         buttonStyle={styles.button2}
                     />
                     <Divider style={styles.divider}/>
                     <AccountCardSection
+                        whenPress={() => this.props.navigation.navigate('NotificationPage')}
                         text={'Suggestions'}
                         buttonStyle={styles.button2}
                     />

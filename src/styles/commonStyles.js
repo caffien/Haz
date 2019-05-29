@@ -12,7 +12,7 @@ const commonStyles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         backgroundColor: '#fff',
-        paddingTop: 10,
+        paddingTop: 35,
 
     },
     cardStyle: {
