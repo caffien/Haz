@@ -9,86 +9,106 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 class LoginAndRegister extends Component {
-state = {
-    login: true
-}
+    state = {
+        login: true
+    };
+
     onButtonPressLogin() {
         this.setState({
             login: true
         });
     }
+
     onButtonPressRegister() {
         this.setState({
             login: false
         });
     }
+
     screen() {
-    if (this.state.login === true) {
-        console.warn(this.state.login)
-        return <Login/>;
-    }
-        console.warn(this.state.login)
+        if (this.state.login === true) {
+            console.warn(this.state.login);
+            return <Login/>;
+        }
+        console.warn(this.state.login);
         return <Registerr/>;
     }
 
     buttonsWhenLogin() {
-    return (
-        <View style={{ marginTop: 10, marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Button
-                titleStyle={{ fontSize: 15, color: 'white' }}
-                buttonStyle={styles.buttonStyleUnActive}
-                type="Clear"
-                title="تسجيل"
-                onPress={() => this.onButtonPressRegister()}
+        return (
+            <View
+                style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <Button
+                    titleStyle={{ fontSize: 15, color: 'white' }}
+                    buttonStyle={styles.buttonStyleUnActive}
+                    type="Clear"
+                    title="تسجيل"
+                    onPress={() => this.onButtonPressRegister()}
 
 
-            />
-            <Button
-                titleStyle={{ fontSize: 15 }}
-                buttonStyle={styles.buttonStyle}
-                title="تسجيل الدخول"
-                onPress={() => this.onButtonPressLogin()}
-            />
-        </View>
-    );
+                />
+                <Button
+                    titleStyle={{ fontSize: 15 }}
+                    buttonStyle={styles.buttonStyle}
+                    title="تسجيل الدخول"
+                    onPress={() => this.onButtonPressLogin()}
+                />
+            </View>
+        );
     }
 
-    buttonsWhenRegister(){
-    return (
-        <View style={{ marginTop: 10, marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Button
-                titleStyle={{ fontSize: 15 }}
-                buttonStyle={styles.buttonStyle}
-                title="تسجيل"
-                onPress={() => this.onButtonPressRegister()}
+    buttonsWhenRegister() {
+        return (
+            <View
+                style={{
+                    marginTop: 10,
+                    marginBottom: 10,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <Button
+                    titleStyle={{ fontSize: 15 }}
+                    buttonStyle={styles.buttonStyle}
+                    title="تسجيل"
+                    onPress={() => this.onButtonPressRegister()}
 
-            />
-            <Button
-                titleStyle={{ fontSize: 15, color: 'white' }}
-                buttonStyle={styles.buttonStyleUnActive}
-                type="Clear"
-                title="تسجيل الدخول"
-                onPress={() => this.onButtonPressLogin()}
-            />
-        </View>
-    );
+                />
+                <Button
+                    titleStyle={{ fontSize: 15, color: 'white' }}
+                    buttonStyle={styles.buttonStyleUnActive}
+                    type="Clear"
+                    title="تسجيل الدخول"
+                    onPress={() => this.onButtonPressLogin()}
+                />
+            </View>
+        );
     }
+
     buttonChecker() {
-    if (this.state.login) {
-        return this.buttonsWhenLogin();
-    }
-    return this.buttonsWhenRegister();
+        if (this.state.login) {
+            return this.buttonsWhenLogin();
+        }
+        return this.buttonsWhenRegister();
     }
 
     render() {
         return (
-            <View style={{
-                marginTop: 50,
-                backgroundColor: '#2a2e43',
-                height: screenHeight,
-                width: screenWidth
-            }}>
-                <View >
+            <View
+                style={{
+                    marginTop: 50,
+                    backgroundColor: '#2a2e43',
+                    height: screenHeight,
+                    width: screenWidth
+                }}
+            >
+                <View>
                     {this.buttonChecker()}
                 </View>
 
@@ -148,7 +168,6 @@ const styles = {
         borderWidth: 1,
         backgroundColor: '#44ccdf',
         padding: 4,
-
 
 
     },
