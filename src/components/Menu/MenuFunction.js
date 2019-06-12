@@ -1,77 +1,131 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CachedImage } from 'react-native-cached-image';
 import { Dimensions, ScrollView, StyleSheet, Text, View, } from 'react-native';
+import { Avatar } from 'react-native-elements';
 
+const window = Dimensions.get('window');
 const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
 
 const styles = StyleSheet.create({
     menu: {
         flex: 1,
-        // width: window.width,
-        // height: window.height,
-        backgroundColor: 'white',
-        borderRightWidth: 0.2,
-        borderColor: '#bbb',
+        width: window.width,
+        height: window.height,
         padding: 20,
+        borderRightWidth:1
     },
     avatarContainer: {
-        marginBottom: 20,
+        marginBottom: 5,
         marginTop: 20,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-end',
+        width: window.width ,
     },
     avatar: {
         width: 48,
         height: 48,
         borderRadius: 24,
-    },
-    name: {
-        fontSize: 22,
-        fontWeight: '900',
-        color: '#154c58',
+        flex: 1,
+        borderWidth: 5
 
     },
     item: {
-        fontSize: 18,
-        fontWeight: '600',
-        paddingTop: 5,
-        color: '#94ccc1',
+        fontSize: 14,
+        fontWeight: '400',
+        padding: 5,
+        color: '#a7aebf',
+
+
     },
+    bottomBorder: {
+        width: window.width,
+        borderBottomWidth: 1,
+        borderColor: '#a7aebf'
+
+    },
+    nameContiner: {
+        width: window.width ,
+        marginBottom: 40,
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        padding: 5,
+        borderColor: '#a7aebf'
+
+    },
+    name: {
+        fontSize: 25
+    },
+    newSection: {
+        fontSize: 20,
+        color: '#a7aebf'
+    },
+    imageBorder: {
+        borderWidth: 5,
+        borderRadius: 50,
+    }
+
 });
 
 export default function MenuFunction({ onItemSelected }) {
     return (
-        <ScrollView scrollsToTop={false} style={styles.menu}>
+
+        <ScrollView style={styles.menu}>
             <View style={styles.avatarContainer}>
-                <CachedImage
-                    style={styles.avatar}
-                    source={{ uri }}
+                <View style={styles.imageBorder}>
+                <Avatar
+
+                    title={'X'}
+                    size="large"
+                    rounded
+                    source={{
+                        uri:
+                            'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                    }}
                 />
-                <Text style={styles.name}>Your name</Text>
+                </View>
+
             </View>
+            <View style={styles.nameContiner}>
+                <Text style={styles.name}>user name</Text>
 
-            <Text
-                onPress={() => onItemSelected('HomeTab')}
-                style={styles.item}
-            >
-                Home
-            </Text>
+            </View>
+            <View style={{ marginBottom: 10 }}>
+                <Text style={styles.newSection}>
+                    Sections
+                </Text>
+            </View>
+            <View>
 
-            <Text
-                onPress={() => onItemSelected('Login')}
-                style={styles.item}
-            >
-                Login
-            </Text>
-            <Text
-                onPress={() => onItemSelected('NotificationPage')
-                }
-                style={styles.item}
-            >
-                Notification
-            </Text>
+                <View style={styles.bottomBorder}>
+                    <Text
+                         onPress={() => onItemSelected('HomePage')}
+                         style={styles.item}
+                    >
+                         Home
+                    </Text>
+                </View>
+
+                <View style={styles.bottomBorder}>
+                    <Text
+                        onPress={() => onItemSelected('Login')}
+                        style={styles.item}
+                    >
+                        Login
+                    </Text>
+                </View>
+
+                <View style={styles.bottomBorder}>
+
+                    <Text
+                        onPress={() => onItemSelected('NotificationPage')
+                        }
+                        style={styles.item}
+                    >
+                        Notification
+                    </Text>
+                </View>
+
+            </View>
         </ScrollView>
     );
 }
