@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     createAppContainer,
@@ -155,7 +154,6 @@ const RootStack = createStackNavigator({
             headerBackTitleVisible: false,
 
         })
-
     },
     Settings: {
         screen: Settings,

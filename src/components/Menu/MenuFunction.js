@@ -9,42 +9,46 @@ const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
 const styles = StyleSheet.create({
     menu: {
         flex: 1,
-        width: window.width,
-        height: window.height,
+        // width: window.width,
+        // height: window.height,
+        backgroundColor: 'white',
+        borderRightWidth: 0.2,
+        borderColor: '#bbb',
         padding: 20,
-        borderRightWidth:1
     },
     avatarContainer: {
-        marginBottom: 5,
+        marginBottom: 20,
         marginTop: 20,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        width: window.width ,
+        alignItems: 'center',
+        justifyContent: 'space-around',
     },
     avatar: {
         width: 48,
         height: 48,
         borderRadius: 24,
-        flex: 1,
-        borderWidth: 5
+    },
+    name: {
+        fontSize: 22,
+        fontWeight: '900',
+        color: '#154c58',
 
     },
     item: {
-        fontSize: 14,
-        fontWeight: '400',
-        padding: 5,
-        color: '#a7aebf',
-
-
+        fontSize: 18,
+        fontWeight: '600',
+        paddingTop: 5,
+        color: '#94ccc1',
     },
     bottomBorder: {
-        width: window.width,
+        // width: window.width,
         borderBottomWidth: 1,
-        borderColor: '#a7aebf'
+        borderColor: '#a7aebf',
+        padding: 5,
 
     },
-    nameContiner: {
-        width: window.width ,
+    nameContainer: {
+        // width: window.width,
         marginBottom: 40,
         alignItems: 'center',
         borderBottomWidth: 1,
@@ -52,9 +56,7 @@ const styles = StyleSheet.create({
         borderColor: '#a7aebf'
 
     },
-    name: {
-        fontSize: 25
-    },
+
     newSection: {
         fontSize: 20,
         color: '#a7aebf'
@@ -72,20 +74,20 @@ export default function MenuFunction({ onItemSelected }) {
         <ScrollView style={styles.menu}>
             <View style={styles.avatarContainer}>
                 <View style={styles.imageBorder}>
-                <Avatar
+                    <Avatar
 
-                    title={'X'}
-                    size="large"
-                    rounded
-                    source={{
-                        uri:
-                            'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                    }}
-                />
+                        title={'X'}
+                        size="large"
+                        rounded
+                        source={{
+                            uri:
+                                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                        }}
+                    />
                 </View>
 
             </View>
-            <View style={styles.nameContiner}>
+            <View style={styles.nameContainer}>
                 <Text style={styles.name}>user name</Text>
 
             </View>
@@ -98,10 +100,10 @@ export default function MenuFunction({ onItemSelected }) {
 
                 <View style={styles.bottomBorder}>
                     <Text
-                         onPress={() => onItemSelected('HomePage')}
-                         style={styles.item}
+                        onPress={() => onItemSelected('HomePage')}
+                        style={styles.item}
                     >
-                         Home
+                        Home
                     </Text>
                 </View>
 
