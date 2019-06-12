@@ -13,7 +13,6 @@ const commonStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         paddingTop: 35,
-
     },
     cardStyle: {
         borderWidth: 0,

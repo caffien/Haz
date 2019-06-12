@@ -36,12 +36,15 @@ class LoginAndRegister extends Component {
 
     buttonsWhenLogin() {
         return (
+
             <View
                 style={{
-                    marginTop: 10,
+                    marginTop: 80,
                     marginBottom: 10,
                     flexDirection: 'row',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+
+
                 }}
             >
                 <Button
@@ -67,10 +70,11 @@ class LoginAndRegister extends Component {
         return (
             <View
                 style={{
-                    marginTop: 10,
+                    marginTop: 80,
                     marginBottom: 10,
                     flexDirection: 'row',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+
                 }}
             >
                 <Button
@@ -102,7 +106,6 @@ class LoginAndRegister extends Component {
         return (
             <View
                 style={{
-                    marginTop: 50,
                     backgroundColor: '#2a2e43',
                     height: screenHeight,
                     width: screenWidth
