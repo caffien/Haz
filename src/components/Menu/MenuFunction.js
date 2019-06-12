@@ -9,24 +9,15 @@ const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
 const styles = StyleSheet.create({
     menu: {
         flex: 1,
-        width: window.width,
-        height: window.height,
         padding: 20,
-        borderRightWidth:1
+        borderRightWidth: 1
+
     },
     avatarContainer: {
+        margin: 20,
         marginBottom: 5,
-        marginTop: 20,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        width: window.width ,
-    },
-    avatar: {
-        width: 48,
-        height: 48,
-        borderRadius: 24,
-        flex: 1,
-        borderWidth: 5
+        justifyContent: 'center',
 
     },
     item: {
@@ -35,16 +26,15 @@ const styles = StyleSheet.create({
         padding: 5,
         color: '#a7aebf',
 
-
     },
     bottomBorder: {
-        width: window.width,
+
         borderBottomWidth: 1,
         borderColor: '#a7aebf'
 
     },
     nameContiner: {
-        width: window.width ,
+
         marginBottom: 40,
         alignItems: 'center',
         borderBottomWidth: 1,
@@ -68,7 +58,6 @@ const styles = StyleSheet.create({
 
 export default function MenuFunction({ onItemSelected }) {
     return (
-
         <ScrollView style={styles.menu}>
             <View style={styles.avatarContainer}>
                 <View style={styles.imageBorder}>
@@ -98,7 +87,7 @@ export default function MenuFunction({ onItemSelected }) {
 
                 <View style={styles.bottomBorder}>
                     <Text
-                         onPress={() => onItemSelected('HomePage')}
+                         onPress={() => onItemSelected('HomeTab')}
                          style={styles.item}
                     >
                          Home
@@ -107,7 +96,7 @@ export default function MenuFunction({ onItemSelected }) {
 
                 <View style={styles.bottomBorder}>
                     <Text
-                        onPress={() => onItemSelected('Login')}
+                        onPress={() => onItemSelected('LoginAndRegister')}
                         style={styles.item}
                     >
                         Login

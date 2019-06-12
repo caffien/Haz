@@ -72,7 +72,7 @@ class BurgerMenu extends Component {
         const menu = <MenuFunction onItemSelected={this.onMenuItemSelected}/>;
 
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{flex: 1}}>
                 <View
                     style={{
                         width: window.width,
@@ -83,6 +83,7 @@ class BurgerMenu extends Component {
                     menu={menu}
                     isOpen={this.props.isOpen}
                     onChange={isOpen => this.props.setBurgerMenuStatus(isOpen)}
+
                 >
                     <View style={styles.container}>
                         {this.props.children}
