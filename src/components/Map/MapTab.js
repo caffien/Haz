@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, Image, InteractionManager, StyleSheet, Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { ENTRIES1 } from '../../static/entries';
 import SliderComponent from '../common/SliderComponent';
 import BottomDrawerComponent from '../common/BottomDrawer/BottomDrawerComponent';
+import CustomCallout from './CustomCallout';
 
 const { width, height } = Dimensions.get('window');
 
@@ -26,12 +27,16 @@ class MapComponent extends Component {
                 longitudeDelta: 0.01,
             },
             data: [],
+            interactionsComplete: false
 
         };
     }
 
 
     componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({ interactionsComplete: true });
+        });
         navigator.geolocation.getCurrentPosition((position) => {
                 const lat = parseFloat(position.coords.latitude);
                 const long = parseFloat(position.coords.longitude);
@@ -53,25 +58,38 @@ class MapComponent extends Component {
 
 
     getMarkers = () => {
-        console.log(this);
         return this.state.data.map((value, key) => {
-            console.log(value, key);
             return (<Marker
+                cacheEnabled
                 key={key}
-                title={value.title}
-                description={value.subtitle}
                 coordinate={{
                     latitude: value.latitude,
                     longitude: value.longitude,
                 }}
                 centerOffset={{ x: -18, y: -60 }}
                 anchor={{ x: 0.69, y: 1 }}
-            />);
+            >
+                <Image
+                    source={{
+                        uri: value.illustration
+                    }}
+                    style={styles.markerImageStyle}
+                />
+                <MapView.Callout
+                    onPress={() => {
+                        console.log('callout pressed');
+                    }}
+                    tooltip
+                    style={styles.calloutStyle}
+                >
+                    <CustomCallout><Text>dhjksf</Text></CustomCallout>
+
+                </MapView.Callout>
+            </Marker>);
         });
     };
 
     changePosition = (index) => {
-        console.log('change position');
         const { latitude, longitude, latitudeDelta, longitudeDelta } = this.state.data[index];
 
         this.map.animateToRegion({
@@ -91,7 +109,6 @@ class MapComponent extends Component {
     };
 
     renderScreen = () => {
-        console.log(this.state.markers);
         return (
             <View style={[styles.container, this.props.style]}>
                 {this.state.initialPosition.latitude !== 0 &&
@@ -123,6 +140,16 @@ class MapComponent extends Component {
     };
 
     render() {
+        if (!this.state.interactionsComplete) {
+            return (<Text
+                style={{
+                    flex: 1,
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >loading...</Text>);
+        }
         return (
             this.renderScreen()
         );
@@ -144,6 +171,16 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
     },
+    markerImageStyle: {
+        height: 25,
+        width: 25,
+        borderRadius: 12
+    },
+    calloutStyle: {
+        backgroundColor: 'white',
+        width: 140,
+        height: 60,
+    }
 });
 
 export default MapComponent;

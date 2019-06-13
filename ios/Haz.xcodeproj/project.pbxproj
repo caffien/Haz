@@ -1655,7 +1655,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.HazEC;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.HazCC;
 				PRODUCT_NAME = Haz;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1691,7 +1691,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.HazEC;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.HazCC;
 				PRODUCT_NAME = Haz;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

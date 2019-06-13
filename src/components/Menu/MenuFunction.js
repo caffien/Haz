@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dimensions, ScrollView, StyleSheet, Text, View, } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, } from 'react-native';
 import { Avatar } from 'react-native-elements';
-
-const window = Dimensions.get('window');
-const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
 
 const styles = StyleSheet.create({
     menu: {
         flex: 1,
-
-        // width: window.width,
-        // height: window.height,
         backgroundColor: 'white',
         borderRightWidth: 0.2,
         borderColor: '#bbb',
