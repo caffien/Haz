@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Dimensions, Image, InteractionManager, StyleSheet, Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import { Button } from 'react-native-elements';
 import { ENTRIES1 } from '../../static/entries';
 import SliderComponent from '../common/SliderComponent';
 import BottomDrawerComponent from '../common/BottomDrawer/BottomDrawerComponent';
 import CustomCallout from './CustomCallout';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import commonStyles from '../../styles/commonStyles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -82,7 +85,27 @@ class MapComponent extends Component {
                     tooltip
                     style={styles.calloutStyle}
                 >
-                    <CustomCallout><Text>dhjksf</Text></CustomCallout>
+                    <CustomCallout style={{ flexDirection: 'column' }}>
+                        <Text style={styles.font}>{value.title}</Text>
+                        <Text style={styles.font}>{value.title}</Text>
+                        <Button
+                            icon={
+                                value.price && <Icon
+                                    name="arrow-right"
+                                    size={15}
+                                    color="#255766"
+                                />
+                            }
+                            title={value.price}
+                            buttonStyle={{
+                                marginTop: 10,
+                                borderRadius: 15,
+                                padding: 5,
+                                backgroundColor: '#4fb8d7'
+                            }}
+                            titleStyle={[commonStyles.titleStyle, { color: '#2c6779' }]}
+                        />
+                    </CustomCallout>
 
                 </MapView.Callout>
             </Marker>);
@@ -178,9 +201,11 @@ const styles = StyleSheet.create({
     },
     calloutStyle: {
         backgroundColor: 'white',
-        width: 140,
-        height: 60,
-    }
+        // width: 140,
+        // height: 60,
+    },
+    font: { color: 'white' }
+
 });
 
 export default MapComponent;

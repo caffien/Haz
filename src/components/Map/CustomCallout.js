@@ -11,12 +11,10 @@ const propTypes = {
 class CustomCallout extends React.Component {
     render() {
         return (
-            <View style={[styles.container, this.props.style]}>
-                <View style={styles.bubble}>
+            <View style={styles.container}>
+                <View style={[styles.bubble, this.props.style]}>
                     <View style={styles.amount}>{this.props.children}</View>
                 </View>
-                <View style={styles.arrowBorder}/>
-                <View style={styles.arrow}/>
             </View>
         );
     }
@@ -28,13 +26,14 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         alignSelf: 'flex-start',
+        backgroundColor: '#ffffff00'
     },
     bubble: {
         width: 140,
         flexDirection: 'row',
         alignSelf: 'flex-start',
-        backgroundColor: '#4da2ab',
-        paddingHorizontal: 20,
+        backgroundColor: '#4291ab',
+        paddingHorizontal: 10,
         paddingVertical: 12,
         borderRadius: 6,
         borderColor: '#007a87',
@@ -59,6 +58,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: -0.5,
     },
+    triangle: {
+        width: 0,
+        height: 0,
+        backgroundColor: 'transparent',
+        borderStyle: 'solid',
+        borderLeftWidth: 50,
+        borderRightWidth: 50,
+        borderBottomWidth: 100,
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderBottomColor: 'red'
+    }
 });
 
 export default CustomCallout;

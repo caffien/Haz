@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+    import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card, Divider, Text, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
