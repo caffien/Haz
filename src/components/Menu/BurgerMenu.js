@@ -14,6 +14,58 @@ import {
 
 const window = Dimensions.get('window');
 
+
+class BurgerMenu extends Component {
+    constructor(props) {
+        super(props);
+        this.onMenuItemSelected = this.onMenuItemSelected.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.isOpen !== this.props.isOpen;
+    }
+
+    onMenuItemSelected = (item) => {
+        this.props.setBurgerMenuItem(item);
+        this.props.navBurgerMenuItem(item);
+    };
+
+
+    render() {
+        const menu = <MenuFunction onItemSelected={this.onMenuItemSelected}/>;
+
+        return (
+            <View style={{ flex: 1 }}>
+                <View
+                    style={{
+                        width: window.width,
+                        height: window.height
+                    }}
+                />
+                <SideMenu
+                    menu={menu}
+                    isOpen={this.props.isOpen}
+                    onChange={isOpen => this.props.setBurgerMenuStatus(isOpen)}
+                >
+                    <View style={styles.container}>
+                        {this.props.children}
+                    </View>
+
+                </SideMenu>
+            </View>
+
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    const { isOpen } = state.burgerMenu;
+    console.log(state.burgerMenu.selectedItem);
+    // const language = state.language.Language;
+
+    return { isOpen };
+};
+
 const styles = StyleSheet.create({
     button: {
         position: 'absolute',
@@ -41,68 +93,6 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
-
-class BurgerMenu extends Component {
-    constructor(props) {
-        super(props);
-
-        this.toggle = this.toggle.bind(this);
-
-
-        this.onMenuItemSelected = this.onMenuItemSelected.bind(this);
-    }
-
-    onMenuItemSelected = (item) => {
-        this.props.setBurgerMenuItem(item);
-        this.props.navBurgerMenuItem(item);
-    };
-
-    updateMenuState(isOpen) {
-        this.setState({ isOpen });
-    }
-
-    toggle() {
-        // this.setState({
-        //     isOpen: !this.state.isOpen,
-        // });
-        this.props.openStatusChange();
-    }
-
-    render() {
-        const menu = <MenuFunction onItemSelected={this.onMenuItemSelected}/>;
-
-        return (
-            <View style={{flex: 1}}>
-                <View
-                    style={{
-                        width: window.width,
-                        height: window.height
-                    }}
-                />
-                <SideMenu
-                    menu={menu}
-                    isOpen={this.props.isOpen}
-                    onChange={isOpen => this.props.setBurgerMenuStatus(isOpen)}
-
-                >
-                    <View style={styles.container}>
-                        {this.props.children}
-                    </View>
-
-                </SideMenu>
-            </View>
-
-        );
-    }
-}
-
-const mapStateToProps = (state) => {
-    const { isOpen } = state.burgerMenu;
-    console.log(state.burgerMenu.selectedItem);
-    // const language = state.language.Language;
-
-    return { isOpen };
-};
 
 export default connect(
     mapStateToProps,

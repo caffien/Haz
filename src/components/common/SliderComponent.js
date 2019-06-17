@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { View, Text, InteractionManager } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { View } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { ENTRIES1 } from '../../static/entries';
-import { sliderWidth, itemWidth } from '../../styles/SliderEntry.style';
+import { itemWidth, sliderWidth } from '../../styles/SliderEntry.style';
 import SliderEntry from '../SliderEntry/SliderEntry';
 import styles, { colors } from '../../styles/index.style';
 
@@ -13,14 +13,22 @@ class SliderComponent extends Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            slider1ActiveSlide: 1
+            slider1ActiveSlide: 1,
+            interactionsComplete: false,
         };
         this._renderItem = this._renderItem.bind(this);
+    }
+
+    componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.setState({ interactionsComplete: true });
+        });
     }
 
     someFunc = () => {
         this.props.navigation.navigate('ShowSingleProduct');
     };
+
 
     _renderItem({ item, index }, props) {
         return (<SliderEntry
@@ -37,11 +45,19 @@ class SliderComponent extends Component<any, any> {
         const { slider1ActiveSlide } = this.state;
         const enablePagination = this.props.enablePagination === false ? this.props.enablePagination : true;
         const autoPlay = this.props.autoPlay === false ? this.props.autoPlay : true;
-        const onSnapToItem = typeof this.props.onSnapToItem === 'undefined' ? {} : this.props.onSnapToItem;
         console.log(enablePagination, this.props.enablePagination);
+        if (!this.state.interactionsComplete) {
+            return (<Text
+                style={{
+                    flex: 1,
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >loading...</Text>);
+        }
         return (
             <View style={{ flex: 1 }}>
-                {/*{this.gradient}*/}
                 <View style={styles.exampleContainer}>
                     <Carousel
                         ref={c => this._slider1Ref = c}

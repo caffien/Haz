@@ -101,7 +101,19 @@ const RootStack = createStackNavigator({
     },
     ShowSingleProduct: {
         screen: ShowSingleProduct,
-        navigationOptions
+        navigationOptions: ({ navigation }) => ({
+            title: 'Product',
+            headerStyle: {
+                backgroundColor: '#fafafa',
+            },
+            headerTintColor: '#5b6266',
+            headerTitleStyle: {
+                fontWeight: '500',
+                alignSelf: 'center',
+            },
+            headerBackTitleVisible: false,
+
+        })
     },
     Login: {
         screen: Login,

@@ -1,16 +1,17 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import { Dimensions, Image, InteractionManager, StyleSheet, Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { ENTRIES1 } from '../../static/entries';
 import SliderComponent from '../common/SliderComponent';
 import BottomDrawerComponent from '../common/BottomDrawer/BottomDrawerComponent';
 import CustomCallout from './CustomCallout';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import commonStyles from '../../styles/commonStyles';
 
-const { width, height } = Dimensions.get('window');
 
+const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height;
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
@@ -30,8 +31,7 @@ class MapComponent extends Component {
                 longitudeDelta: 0.01,
             },
             data: [],
-            interactionsComplete: false
-
+            interactionsComplete: false,
         };
     }
 
@@ -113,21 +113,23 @@ class MapComponent extends Component {
     };
 
     changePosition = (index) => {
-        const { latitude, longitude, latitudeDelta, longitudeDelta } = this.state.data[index];
+        InteractionManager.runAfterInteractions(() => {
+            const { latitude, longitude, latitudeDelta, longitudeDelta } = this.state.data[index];
 
-        this.map.animateToRegion({
-            latitude,
-            longitude,
-            latitudeDelta,
-            longitudeDelta
-        });
-        this.setState({
-            initialPosition: {
-                latitude: this.state.data[index].latitude,
-                longitude: this.state.data[index].longitude,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
-            }
+            this.map.animateToRegion({
+                latitude,
+                longitude,
+                latitudeDelta,
+                longitudeDelta
+            });
+            this.setState({
+                initialPosition: {
+                    latitude: this.state.data[index].latitude,
+                    longitude: this.state.data[index].longitude,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA,
+                },
+            });
         });
     };
 
